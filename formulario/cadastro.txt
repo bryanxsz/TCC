@@ -1,0 +1,14 @@
+Nome: Bryan | Email: bryan.matias@gmail.com | Senha: 123 | Tipo: 1
+Nome: Victor Laluce | Email: victor.frigerio@gmail.com | Senha: 1231 | Tipo: 1
+Nome: Victor Laluce | Email: victor.frigerio@gmail.com | Senha: 1231 | Tipo: 1
+Nome: Victor Laluce | Email: victor.frigerio@gmail.com | Senha: 1231 | Tipo: 1
+Nome: Victor Laluce | Email: victor.frigerio@gmail.com | Senha: 1231 | Tipo: 1
+Nome: Brissi | Email: brissi@gmail.com | Senha: brissi123 | Tipo: 1
+Nome: Brissi | Email: brissi@gmail.com | Senha: brissi123 | Tipo: 1
+Nome: Brissi | Email: brissi@gmail.com | Senha: brissi123 | Tipo: 1
+Nome: Brissi | Email: brissi@gmail.com | Senha: brissi123 | Tipo: 1
+Nome: Brissi | Email: brissi123@gmail.com | Senha: 123 | Tipo: 1
+Nome: Bryan | Email: bryan.matias@gmail.com | Senha: 1212 | Tipo: 1
+Nome: João gabriel | Email: joão@gmail.com | Senha: 12233 | Tipo: 2
+Nome: Bryan | Email: bryan.matias@gmail.com | Senha: 1212 | Tipo: 1
+Nome: Anderson | Email: anderson@gmail.com | Senha: 221 | Tipo: 2

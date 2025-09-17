@@ -1,0 +1,542 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color:  #ffc446;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+ 
+header {
+  background-color: #ffc446;
+  padding: 10px 20px;
+}
+
+nav {   
+  position: fixed;       
+  top: 0;                 
+  left: 0;
+  padding: 15px;
+  z-index: 1000; 
+  background-color: #ffc446;  
+  width: 100%;       
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom: black 1px solid;
+}
+
+.nav-logo img {
+  height: 50px;
+  width: 50px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s;
+  margin-left: 50px;
+}
+
+.nav-menu li a:hover {
+  color: #ffffff;;
+  transition: 0.5s;
+}
+
+.nav-cta {
+  margin-left: auto;
+}
+
+.btn-comecar {
+  background: linear-gradient(#ff9900, #ff6600);
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+  margin-right: 50px;
+}
+
+.btn-comecar:hover {
+  transition: 0.5s;
+  background: linear-gradient(#e67e00, #cc5500);
+  color: #ffffff;;
+}
+
+  /* NOSSOS ATLETAS */
+
+.atletas-section {
+  background-color: #400000; /* tom vinho escuro */
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.atletas-section h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.atletas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.atleta-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.atleta-card img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 4px solid #FFD700; /* borda amarela */
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.atleta-info strong {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.atleta-info p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* QUEM SOMOS */
+
+.carousel-slide {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+
+.carousel-slide.active {
+  display: block;
+  animation: fade 1s ease-in-out;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  filter: brightness(0.5);
+}
+
+.caption {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  max-width: 600px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  z-index: 2;
+  color: white;
+  border-left: 5px solid #FFD700;
+  font-family: sans-serif;
+}
+
+
+.quemsomos-section {
+  position: relative;
+  background: #000;
+  color: white;
+  overflow: hidden;
+  margin-top: 50px;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-height: 600px;
+}
+
+.caption h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #FFD700;
+}
+
+.caption p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #3b0000;
+  border: none;
+  font-size: 30px;
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+}
+.carousel-btn:hover {
+  background-color: rgba(255, 0, 0, 0.3);
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+.carousel-btn.next {
+  right: 10px;
+}
+
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+/* NOSSOS TREINADORES */
+
+
+.nossostreinadores {
+  background-color: #3b0000;
+  color: white;
+  padding: 60px 30px;
+  font-family: Arial, sans-serif;
+}
+
+h2 .titulo {
+  
+  font-size: 32px;
+  margin-bottom: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+.treinador-conteudo {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.treinador-texto {
+  flex: 1;
+  min-width: 320px;
+  max-width: 600px;
+  padding: 20px;
+}
+
+.treinador-texto h3 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.treinador-texto h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+.linha {
+  width: 70%;
+  height: 2px;
+  background-color: white;
+  margin: 20px 0;
+}
+
+.treinador-texto p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.treinador-texto em {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #d0d0d0;
+}
+
+.treinador-imagem {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  min-width: 300px;
+}
+
+.treinador-imagem img {
+  max-width: 100%;
+  height: auto;
+  border: 4px solid orange;
+  box-sizing: border-box;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 50px;
+}
+
+ /* CARROSSEL DE DEPOIMENTOS */
+
+.carrossel {
+  max-width: 400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.depoimento {
+  background: #f9f9f9;
+  border-radius: 20px;
+  padding: 30px 25px 60px;
+  box-shadow: 0 8px 20px rgba(255, 8, 8, 0.08);
+  position: relative;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom-left-radius: 100% 80px;
+  border-bottom-right-radius: 100% 80px;
+}
+
+.depoimento.ativo {
+  display: flex;
+}
+
+.estrelas {
+  color:  #400000;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.texto {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.autor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.autor img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.info strong {
+  font-weight: 700;
+  color:  #400000;
+  font-size: 16px;
+}
+
+.info span {
+  font-size: 12px;
+  color: #777;
+  text-transform: uppercase;
+}
+
+.base-roxa {
+  background: #400000;
+  height: 40px;
+  width: 100%;
+  border-bottom-left-radius: 100% 80px;
+  border-bottom-right-radius: 100% 80px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.botoes-carrossel {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.botoes-carrossel button {
+  background-color: #400000;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.botoes-carrossel button:hover {
+  background-color:  #400000de;
+  transform: scale(1.1);
+}
+
+.depo h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  font-weight: bold;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+footer {
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 15px;
+}
+
+#comecar {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.oferta-box {
+  background: linear-gradient(#ff6a00, #ff8000);
+  border-radius: 20px;
+  padding: 30px;
+  color: white;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px black;
+  position: relative;
+  border: 1px solid black;
+}
+
+.logo-jump {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.logo-jump img {
+  height: 150px;
+}
+
+.logo-jump h2 {
+  font-size: 36px;
+  margin: 0;
+  letter-spacing: 4px;
+  color: white;
+  text-shadow: 2px 2px black;
+}
+
+.subtitulo {
+  font-size: 19px;
+  margin: 10px 0;
+  color: #320000;
+  font-weight: bold;
+}
+
+.preco-parcelado {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.preco-avista {
+  background-color: #500000;
+  padding: 6px 12px;
+  display: inline-block;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.acesso {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.botao-comecar {
+  margin-top: 20px;
+}
+
+.btn-vaga {
+  background: linear-gradient(#ffcc33, #ff6600);
+  color: white;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+  transition: background 0.3s;
+}
+
+.btn-vaga:hover {
+  background: linear-gradient(#ffa500, #e65c00);
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+  display: block;
+}
+
+.nav-menu {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 10px;
+  background-color: #f0f0f0;
+  padding: 10px 0;
+}
+
+.nav-menu.show {
+  display: flex;
+}
+
+.nav-menu li {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.btn-comecar {
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+}
+.nav-cta {
+  margin-right: 10px;
+}
+}
