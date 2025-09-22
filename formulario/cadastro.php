@@ -39,6 +39,7 @@ if (mysqli_num_rows($result) > 0) {
             echo "Email: $email <br>";
             echo "Senha: $senha <br>";
             echo "Tipo: $tipo <br>";
+            header ('Location: ../index.php');
         }else
 
         {

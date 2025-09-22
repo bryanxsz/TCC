@@ -31,27 +31,53 @@
 <body>
     
 <?php
+session_start();
 include 'conexao.php';
 
-    $email=$_POST['email'] ?? '';
-    $senha=$_POST['senha'] ?? '';
+$email = $_POST['email'] ?? '';
+$senha = $_POST['senha'] ?? '';
 
+// Busca o usuário pelo email
+$sql = "SELECT * FROM usuario WHERE email = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
 
-    $sql = "SELECT * FROM usuario WHERE email='$email'";
-    $result= mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($result);
-    print_r ($row);
-    if($row ['senha'] == $senha){
-        session_start();
-        $_SESSION ['user_name'] = $row ['nome'];
-        $_SESSION['user_tipo'] = $row['tipo']; 
-        header ('Location: apimercadopago.php');
-    }else{
-        echo"Usuário ou senha inválida!";
+if ($row && $row['senha'] == $senha) {
 
+    // Salva dados do usuário na sessão
+    $_SESSION['user_id'] = $row['id_usuario']; // ID correto
+    $_SESSION['user_name'] = $row['nome'];
+    $_SESSION['user_tipo'] = $row['tipo'];
+
+    // Verifica o campo 'ativo'
+    if (isset($row['ativo'])) {
+        if ($row['ativo'] == 1) {
+            // Usuário ativo -> tela inicial
+            header('Location: tela-inicial.php');
+            exit;
+        } elseif ($row['ativo'] == 0) {
+            // Usuário não ativo -> redireciona para página de pagamento
+            header('Location: form-cartao.php');
+            exit;
+        } else {
+            echo "Usuário ou senha inválida!";
+        }
+    } else {
+        echo "Erro: atributo 'ativo' não encontrado.";
     }
-    mysqli_close($conn);
+
+} else {
+    echo "Usuário ou senha inválida!";
+}
+
+$stmt->close();
+$conn->close();
 ?>
+
+
 
 
 

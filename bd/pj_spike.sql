@@ -12,7 +12,8 @@ CREATE TABLE usuario (
     nome VARCHAR(50),
     email VARCHAR(50),
     senha VARCHAR(50),
-    tipo CHAR(1)
+    tipo CHAR(1),
+    ativo tinyint(4) not null default '0'
 );
 
 CREATE TABLE pagamento (

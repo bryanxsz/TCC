@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
   <header>
 
     <nav>
@@ -203,19 +204,39 @@
   </div>
 </section>
 
+<?php
+
+include 'conexao.php';
+
+$id = 1; 
+
+$sql = "SELECT valor FROM sistema_de_pagamento WHERE id_sistema = $id";
+$result = mysqli_query($conn, $sql);
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $valor = $row['valor'];
+} else {
+    echo "Nenhum resultado encontrado.";
+}
+
+mysqli_close($conn);
+?>
+
 <section id="comecar">
   <div class="oferta-box">
     <div class="logo-jump">
       <img src="./imagens/logospike.png" alt="Logo Jump" />
     </div>
+    
       <p class="subtitulo">PROMOÇÃO!</p>
-      <p class="preco-parcelado">Em até <strong>3x de R$XXX</strong></p>
-      <p class="preco-avista">ou R$XXX à vista</p>
+      <p class="preco-avista"><strong>R$<?= $valor ?></strong> à vista</p>
       <p class="acesso">Acesso vitalício</p>
+     
     </div>
 
     <div class="botao-comecar">
-      <a href="./formulario/cadastrar.html" class="btn-vaga">CADASTRAR</a>
+      <a href="./formulario/cadastrar.html" class="btn-vaga">ADQUIRIR</a>
     </div>
   </section>
 
