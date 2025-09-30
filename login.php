@@ -51,12 +51,13 @@ if ($row && $row['senha'] == $senha) {
     $_SESSION['user_id'] = $row['id_usuario']; // ID correto
     $_SESSION['user_name'] = $row['nome'];
     $_SESSION['user_tipo'] = $row['tipo'];
+    $_SESSION['user_email'] = $row['email'];
 
     // Verifica o campo 'ativo'
     if (isset($row['ativo'])) {
         if ($row['ativo'] == 1) {
             // Usuário ativo -> tela inicial
-            header('Location: tela-inicial.php');
+            header('Location: modulos.php');
             exit;
         } elseif ($row['ativo'] == 0) {
             // Usuário não ativo -> redireciona para página de pagamento

@@ -115,7 +115,7 @@ $row = $result->fetch_assoc();
 
 // Se usuário já é ativo ou é professor (tipo = 2), redireciona
 if (!$row || $row['ativo'] == 1 || $row['tipo'] == 2) {
-    header('Location: tela-inicial.php');
+    header('Location: modulos.php');
     exit;
 }
 ?>
