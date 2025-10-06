@@ -1,0 +1,185 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  background-color: #ffc446;
+}
+
+/* HEADER */
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffc446;
+  border-bottom: 1px solid black;
+  padding: 15px 20px;
+}
+
+.logo {
+  height: 45px;
+}
+
+.topo h1 {
+  color: black;
+  font-size: 22px;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid black;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: white;
+}
+
+.perfil .foto {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+/* LAYOUT */
+.aulas-container {
+  display: flex;
+  gap: 30px;
+  padding: 30px;
+}
+
+/* MENU LATERAL */
+.menu-lateral {
+  width: 280px;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.menu-lateral h2 {
+  background: black;
+  color: white;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-top: 0;
+  text-align: center;
+}
+
+.aula {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 18px;
+  width: 100%;
+  margin-top: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.aula:hover {
+  background: #222;
+}
+
+.aula.ativa {
+  background: #400000;
+}
+
+.status {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  border: 2px solid #ffc446;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.status.visto {
+  background: #00c851;
+}
+
+/* ÁREA DO VÍDEO */
+.video-area {
+  flex: 1;
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.video-area h2 {
+  margin-bottom: 15px;
+  color: #222;
+  text-align: center;
+}
+
+.video-box {
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 16 / 9;
+  background: #ece3dd;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.video-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 15px;
+}
+
+/* CHECKBOX DE VISTO */
+.checkbox-visto {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #222;
+}
+
+.checkbox-visto input {
+  display: none;
+}
+
+.custom-check {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #400000;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  transition: 0.3s;
+}
+
+.checkbox-visto input:checked + .custom-check {
+  background-color: #00c851;
+  border-color: #00c851;
+}
+
+/* BOTÃO */
+.btn-comentar {
+  background: black;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 25px;
+  font-weight: 600;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-comentar:hover {
+  background: #400000;
+}

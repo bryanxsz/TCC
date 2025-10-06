@@ -21,3 +21,4 @@ Nome: vini | Email: vinicius | Senha: 2222 | Tipo: 1
 Nome: carlos | Email: carlos@gmail.com | Senha: 44 | Tipo: 2
 Nome: Fulano | Email: fulano@gmail.com | Senha: 333 | Tipo: 1
 Nome: Bryan | Email: bryan.matias@gmail.com | Senha: 1212 | Tipo: 1
+Nome: bryan | Email: bryan@gmail.com | Senha: 1212 | Tipo: 1

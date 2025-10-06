@@ -1,26 +1,26 @@
 body {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
-  background-color: #ffc446;;
-  color: #333;
+  background-color: #ffc446;
 }
 
-/* header */
+/* HEADER */
 .topo {
-  position: sticky;
-  top: 0;
-  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 20px;
-  background: #ffc446;;
+  background-color: #ffc446;
   border-bottom: 1px solid black;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 15px 20px;
 }
 
 .logo {
   height: 45px;
+}
+
+.topo h1 {
+  color: black;
+  font-size: 22px;
 }
 
 .perfil {
@@ -28,6 +28,9 @@ body {
   align-items: center;
   gap: 10px;
   border: 1px solid black;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: white;
 }
 
 .perfil .foto {

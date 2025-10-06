@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         echo "<script>
                 alert('Compra realizada com sucesso!');
-                window.location.href = 'tela-inicial.php';
+                window.location.href = 'modulos.php';
               </script>";
         exit;
     } elseif ($nome === "RECU") {

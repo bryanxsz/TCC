@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Módulos - Voleibol</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./css/modulos.css">
 </head>
 <body>
   <?php
@@ -15,32 +15,31 @@ if (!isset($_SESSION['user_name'])) {
 }
 ?>
 <header class="topo">
-    <img src="logo.png" class="logo" alt="Logo">
-    <h1>Módulos</h1>
-    <div class="perfil">
-        <img src="user.png" class="foto" alt="Foto do usuário">
-        <div>
-            <strong>
-                Olá, 
-                <?php 
-                    if ($_SESSION['user_tipo'] == '1') {
-                        echo "Aluno ";
-                    } else {
-                        echo "Professor ";
-                    }
-                    echo htmlspecialchars($_SESSION['user_name'], ENT_QUOTES, 'UTF-8'); 
-                ?>!
-            </strong>
-            <br>
-            <small>
-                <?php 
-                    echo isset($_SESSION['user_email']) 
-                         ? htmlspecialchars($_SESSION['user_email'], ENT_QUOTES, 'UTF-8') 
-                         : "Email não disponível"; 
-                ?>
-            </small>
-        </div>
+  <img src="./imagens/logospike.png" class="logo" alt="Logo">
+  <h1>Módulos</h1>
+  <div class="perfil">
+    <img src="./imagens/images.png" class="foto" alt="Foto do usuário">
+    <div>
+      <strong>
+        Olá, 
+        <?php 
+          if ($_SESSION['user_tipo'] == '1') {
+              echo "Aluno ";
+          } else {
+              echo "Professor ";
+          }
+          echo htmlspecialchars($_SESSION['user_name'], ENT_QUOTES, 'UTF-8'); 
+        ?>!
+      </strong><br>
+      <small>
+        <?php 
+          echo isset($_SESSION['user_email']) 
+               ? htmlspecialchars($_SESSION['user_email'], ENT_QUOTES, 'UTF-8') 
+               : "Email não disponível"; 
+        ?>
+      </small>
     </div>
+  </div>
 </header>
 
 
@@ -54,7 +53,7 @@ if (!isset($_SESSION['user_name'])) {
           <div class="info">
             <h3>Manchete</h3>
             <div class="barra"><div style="width:60%"></div></div>
-            <a href="unidades.html" class="btn">Acessar</a>
+            <a href="./aulas/recepcao.php" class="btn">Acessar</a>
           </div>
         </div>
 
@@ -158,4 +157,3 @@ if (!isset($_SESSION['user_name'])) {
   </main>
 </body>
 </html>
-```
