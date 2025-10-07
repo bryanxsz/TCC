@@ -18,7 +18,7 @@
 
     <nav>
   <div class="nav-logo">
-    <img src="./imagens/logospike.png" alt="Logo do Projeto Spike" />
+    <img src="./imagens/logospike.png" class="logo" alt="Logo do Projeto Spike" />
   </div>
 
   <ul class="nav-menu">

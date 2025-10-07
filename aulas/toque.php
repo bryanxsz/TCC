@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_name'])) {
 include "../conexao.php";
 
 // Módulo atual
-$modulo = "recepcao";
+$modulo = "toque";
 
 // Busca aulas
 $sql = "SELECT * FROM aulas WHERE modulo='$modulo' ORDER BY numero_aula ASC";

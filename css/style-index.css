@@ -29,9 +29,13 @@ nav {
   border-bottom: black 1px solid;
 }
 
-.nav-logo img {
+.logo {
   height: 50px;
   width: 50px;
+  background-color: black; 
+  padding: 7px; 
+  margin-bottom: -10px; 
+  border-radius: 10%
 }
 
 .nav-menu {

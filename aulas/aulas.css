@@ -15,7 +15,11 @@ body {
 }
 
 .logo {
-  height: 45px;
+  height: 50px;
+  background-color: black; 
+  padding: 7px; 
+  margin-bottom: -10px; 
+  border-radius: 10%
 }
 
 .topo h1 {

@@ -24,9 +24,9 @@ if (!isset($_SESSION['user_name'])) {
         Olá, 
         <?php 
           if ($_SESSION['user_tipo'] == '1') {
-              echo "Aluno ";
+              echo "Aluno, ";
           } else {
-              echo "Professor ";
+              echo "Professor, ";
           }
           echo htmlspecialchars($_SESSION['user_name'], ENT_QUOTES, 'UTF-8'); 
         ?>!
@@ -38,8 +38,11 @@ if (!isset($_SESSION['user_name'])) {
                : "Email não disponível"; 
         ?>
       </small>
+            <br>
+      <small><a href="logout.php">Sair</a></small>
     </div>
   </div>
+  
 </header>
 
 
@@ -62,7 +65,7 @@ if (!isset($_SESSION['user_name'])) {
           <div class="info">
             <h3>Toque</h3>
             <div class="barra"><div style="width:45%"></div></div>
-            <a href="unidades.html" class="btn">Acessar</a>
+            <a href="./aulas/toque.php" class="btn">Acessar</a>
           </div>
         </div>
 
