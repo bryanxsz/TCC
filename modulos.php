@@ -48,7 +48,7 @@ if (!isset($_SESSION['user_name'])) {
 
   <main class="conteudo">
     <!-- FUNDAMENTOS -->
-    <section>
+    <section class="fundamentos">
       <h2>Fundamentos</h2>
       <div class="grid">
         <div class="card">
@@ -74,7 +74,7 @@ if (!isset($_SESSION['user_name'])) {
           <div class="info">
             <h3>Saque</h3>
             <div class="barra"><div style="width:75%"></div></div>
-            <a href="unidades.html" class="btn">Acessar</a>
+            <a href="./aulas/saque.php" class="btn">Acessar</a>
           </div>
         </div>
 
@@ -83,7 +83,7 @@ if (!isset($_SESSION['user_name'])) {
           <div class="info">
             <h3>Ataque</h3>
             <div class="barra"><div style="width:30%"></div></div>
-            <a href="unidades.html" class="btn">Acessar</a>
+            <a href="./aulas/ataque.php" class="btn">Acessar</a>
           </div>
         </div>
 
@@ -92,7 +92,7 @@ if (!isset($_SESSION['user_name'])) {
           <div class="info">
             <h3>Bloqueio</h3>
             <div class="barra"><div style="width:50%"></div></div>
-            <a href="unidades.html" class="btn">Acessar</a>
+            <a href="./aulas/bloqueio.php" class="btn">Acessar</a>
           </div>
         </div>
 
@@ -101,14 +101,14 @@ if (!isset($_SESSION['user_name'])) {
           <div class="info">
             <h3>Defesa</h3>
             <div class="barra"><div style="width:40%"></div></div>
-            <a href="unidades.html" class="btn">Acessar</a>
+            <a href="./aulas/defesa.php" class="btn">Acessar</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- POSIÇÕES -->
-    <section>
+    <section class="posicoes">
       <h2>Posições</h2>
       <div class="grid">
         <div class="card">
@@ -116,7 +116,7 @@ if (!isset($_SESSION['user_name'])) {
           <div class="info">
             <h3>Levantador</h3>
             <div class="barra"><div style="width:80%"></div></div>
-            <a href="unidades.html" class="btn">Acessar</a>
+            <a href="./aulas/levantador.php" class="btn">Acessar</a>
           </div>
         </div>
 
@@ -125,7 +125,7 @@ if (!isset($_SESSION['user_name'])) {
           <div class="info">
             <h3>Oposto</h3>
             <div class="barra"><div style="width:55%"></div></div>
-            <a href="unidades.html" class="btn">Acessar</a>
+            <a href="./aulas/oposto.php" class="btn">Acessar</a>
           </div>
         </div>
 
@@ -134,7 +134,7 @@ if (!isset($_SESSION['user_name'])) {
           <div class="info">
             <h3>Ponteiro</h3>
             <div class="barra"><div style="width:65%"></div></div>
-            <a href="unidades.html" class="btn">Acessar</a>
+            <a href="./aulas/ponteiro.php" class="btn">Acessar</a>
           </div>
         </div>
 
@@ -143,7 +143,7 @@ if (!isset($_SESSION['user_name'])) {
           <div class="info">
             <h3>Central</h3>
             <div class="barra"><div style="width:45%"></div></div>
-            <a href="unidades.html" class="btn">Acessar</a>
+            <a href="./aulas/central.php" class="btn">Acessar</a>
           </div>
         </div>
 
@@ -152,7 +152,7 @@ if (!isset($_SESSION['user_name'])) {
           <div class="info">
             <h3>Líbero</h3>
             <div class="barra"><div style="width:70%"></div></div>
-            <a href="unidades.html" class="btn">Acessar</a>
+            <a href="./aulas/libero.php" class="btn">Acessar</a>
           </div>
         </div>
       </div>
