@@ -27,7 +27,7 @@
         <div class="professor-box" id="professorBox">
             <img class="professor-foto" src="../imagens/images.png" alt="Foto do Professor">
             <div>
-                <strong id="professorNome"><?php echo htmlspecialchars($aulaInicial['professor_nome'] ?? 'Professor não definido'); ?></strong><br>
+                <strong id="professorNome"><?php echo ucwords(htmlspecialchars($aulaInicial['professor_nome'] ?? 'Professor não definido')); ?>    </strong><br>
                 <small id="professorEmail"><?php echo htmlspecialchars($aulaInicial['professor_email'] ?? ''); ?></small>
             </div>
         </div>
