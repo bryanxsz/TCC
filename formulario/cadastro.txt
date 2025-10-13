@@ -25,3 +25,6 @@ Nome: bryan | Email: bryan@gmail.com | Senha: 1212 | Tipo: 1
 Nome: Anderson | Email: anderson@gmail.com | Senha: 11 | Tipo: 2
 Nome: antonio | Email: email.com | Senha: 12121212 | Tipo: 1
 Nome: Bryan | Email: bryan@gmail.com | Senha: 1212 | Tipo: 2
+Nome: Bryan | Email: bryan.matias@gmail.com | Senha: 1212 | Tipo: 1
+Nome: Anderson | Email: anderson@gmail.com | Senha: 1212 | Tipo: 2
+Nome: Vinicius | Email: vinicius@gmail.com | Senha: 1212 | Tipo: 2

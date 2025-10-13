@@ -14,15 +14,14 @@ $modulo = "ataque";
 $sql = "SELECT * FROM aulas WHERE modulo='$modulo' ORDER BY numero_aula ASC";
 $result = $conn->query($sql);
 
-// Se não houver aulas, cria 3 aulas vazias
 if ($result->num_rows == 0) {
-    for ($i = 1; $i <= 3; $i++) {
-        $conn->query("INSERT INTO aulas (modulo, numero_aula, nome_aula, titulo, link_video) VALUES ('$modulo', $i, 'Aula $i', '', '')");
-    }
-    $result = $conn->query($sql);
+    $aulas = []; // Nenhuma aula cadastrada
+} else {
+    $aulas = $result->fetch_all(MYSQLI_ASSOC);
 }
 
-$aulas = $result->fetch_all(MYSQLI_ASSOC);
+// Pega a primeira aula como padrão
+$aulaInicial = $aulas[0] ?? null;
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -44,10 +43,8 @@ $aulas = $result->fetch_all(MYSQLI_ASSOC);
             <strong>
                 Olá, <?php echo ($_SESSION['user_tipo'] == '1' ? "Aluno, " : "Professor, ") . htmlspecialchars($_SESSION['user_name']); ?>!
             </strong><br>
-            <small><?php echo htmlspecialchars($_SESSION['user_email']); ?></small>
-            </small>
-            <br>
-      <small><a href="logout.php">Sair</a></small>
+            <small><?php echo htmlspecialchars($_SESSION['user_email']); ?></small><br>
+            <small><a href="logout.php">Sair</a></small>
         </div>
     </div>
 </header>
@@ -55,26 +52,31 @@ $aulas = $result->fetch_all(MYSQLI_ASSOC);
 <main class="aulas-container">
     <!-- MENU LATERAL -->
     <aside class="menu-lateral">
-        <div class="unidade">
-            <h2><?php echo ucfirst($modulo); ?></h2>
-            <?php foreach ($aulas as $i => $aula): ?>
-                <button class="aula <?php echo $i == 0 ? 'ativa' : ''; ?>" 
-                        data-video="<?php echo htmlspecialchars($aula['link_video']); ?>" 
-                        data-titulo="<?php echo htmlspecialchars($aula['titulo']); ?>" 
-                        data-id="<?php echo $aula['id']; ?>">
-                    <?php echo htmlspecialchars($aula['nome_aula']); ?>
-                    <span class="status" title="Clique para marcar como visto"></span>
-                </button>
-            <?php endforeach; ?>
-        </div>
+        <h2><?php echo ucfirst($modulo); ?></h2>
+        <?php foreach ($aulas as $i => $aula): ?>
+            <button class="aula <?php echo $i === 0 ? 'ativa' : ''; ?>"
+                    data-id="<?php echo $aula['id']; ?>"
+                    data-titulo="<?php echo htmlspecialchars($aula['titulo']); ?>"
+                    data-video="<?php echo htmlspecialchars($aula['link_video']); ?>"
+                    data-professor_nome="<?php echo htmlspecialchars($aula['professor_nome']); ?>"
+                    data-professor_email="<?php echo htmlspecialchars($aula['professor_email']); ?>">
+                <?php echo htmlspecialchars($aula['nome_aula']); ?>
+                <span class="status" title="Clique para marcar como visto"></span>
+            </button>
+        <?php endforeach; ?>
     </aside>
 
     <!-- ÁREA DO VÍDEO -->
     <section class="video-area">
-        <h2 id="tituloAula"><?php echo htmlspecialchars($aulas[0]['titulo']); ?></h2>
+        <h2 id="tituloAula"><?php echo htmlspecialchars($aulaInicial['titulo'] ?? ''); ?></h2>
+
         <div class="video-box">
-            <iframe id="videoFrame" src="<?php echo htmlspecialchars($aulas[0]['link_video']); ?>" 
-                    title="Vídeo da Aula" frameborder="0" allowfullscreen></iframe>
+            <iframe id="videoFrame"
+                    src="<?php echo htmlspecialchars($aulaInicial['link_video'] ?? ''); ?>"
+                    title="Vídeo da Aula"
+                    frameborder="0"
+                    allowfullscreen>
+            </iframe>
         </div>
 
         <label class="checkbox-visto">
@@ -82,60 +84,77 @@ $aulas = $result->fetch_all(MYSQLI_ASSOC);
             <span class="custom-check"></span> Marcar como visto
         </label>
 
-        <?php if ($_SESSION['user_tipo'] == '2'): // Professor ?>
-            <a class="btn-editar" id="btnEditar" href="editar_aula.php?id=<?php echo $aulas[0]['id']; ?>">Editar aula atual</a>
+        <?php if ($_SESSION['user_tipo'] == '2' && $aulaInicial): ?>
+            <a class="btn-editar"
+               id="btnEditar"
+               href="editar_aula.php?id=<?php echo $aulaInicial['id']; ?>&voltar=<?php echo urlencode($_SERVER['REQUEST_URI']); ?>">
+                Editar aula atual
+            </a>
         <?php endif; ?>
+
+        <!-- PERFIL DO PROFESSOR -->
+        <div class="professor-box" id="professorBox">
+            <img class="professor-foto" src="../imagens/images.png" alt="Foto do Professor">
+            <div>
+                <strong id="professorNome"><?php echo htmlspecialchars($aulaInicial['professor_nome'] ?? 'Professor não definido'); ?></strong><br>
+                <small id="professorEmail"><?php echo htmlspecialchars($aulaInicial['professor_email'] ?? ''); ?></small>
+            </div>
+        </div>
     </section>
 </main>
 
 <script>
+// Seletores
 const aulas = document.querySelectorAll('.aula');
 const titulo = document.getElementById('tituloAula');
 const video = document.getElementById('videoFrame');
 const checkVisto = document.getElementById('checkVisto');
 const btnEditar = document.getElementById('btnEditar');
+const professorNome = document.getElementById('professorNome');
+const professorEmail = document.getElementById('professorEmail');
 
 // Progresso local
 const progresso = JSON.parse(localStorage.getItem('aulasVistas')) || {};
 
-// Atualiza visual
+// Função para atualizar status visual
 function atualizarStatus() {
     aulas.forEach(aula => {
         const status = aula.querySelector('.status');
-        const id = aula.dataset.titulo;
-        if (progresso[id]) {
-            status.classList.add('visto');
-        } else {
-            status.classList.remove('visto');
-        }
+        const id = aula.dataset.id;
+        status.classList.toggle('visto', !!progresso[id]);
     });
+
     const ativa = document.querySelector('.aula.ativa');
     if (ativa) {
-        const idAtiva = ativa.dataset.titulo;
-        checkVisto.checked = !!progresso[idAtiva];
+        checkVisto.checked = !!progresso[ativa.dataset.id];
     }
 }
 
-// Mudar aula
+// Seleção de aula
 aulas.forEach(aula => {
     aula.addEventListener('click', e => {
         if (e.target.classList.contains('status')) return;
+
         aulas.forEach(a => a.classList.remove('ativa'));
         aula.classList.add('ativa');
+
         titulo.textContent = aula.dataset.titulo;
         video.src = aula.dataset.video;
 
+        professorNome.textContent = aula.dataset.professor_nome || 'Professor não definido';
+        professorEmail.textContent = aula.dataset.professor_email || '';
+
         if (btnEditar) {
-            btnEditar.href = 'editar_aula.php?id=' + aula.dataset.id;
+            btnEditar.href = 'editar_aula.php?id=' + aula.dataset.id + '&voltar=' + encodeURIComponent(window.location.pathname);
         }
+
         atualizarStatus();
     });
 
-    // Clicar na bolinha de status
-    const status = aula.querySelector('.status');
-    status.addEventListener('click', e => {
+    // Clique na bolinha de status
+    aula.querySelector('.status').addEventListener('click', e => {
         e.stopPropagation();
-        const id = aula.dataset.titulo;
+        const id = aula.dataset.id;
         progresso[id] = !progresso[id];
         localStorage.setItem('aulasVistas', JSON.stringify(progresso));
         atualizarStatus();
@@ -146,12 +165,13 @@ aulas.forEach(aula => {
 checkVisto.addEventListener('change', () => {
     const ativa = document.querySelector('.aula.ativa');
     if (!ativa) return;
-    const id = ativa.dataset.titulo;
+    const id = ativa.dataset.id;
     progresso[id] = checkVisto.checked;
     localStorage.setItem('aulasVistas', JSON.stringify(progresso));
     atualizarStatus();
 });
 
+// Inicializa status
 atualizarStatus();
 </script>
 </body>
