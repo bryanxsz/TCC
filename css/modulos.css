@@ -39,6 +39,10 @@ body {
   background: white;
 }
 
+.perfil a:hover {
+  color: red;
+}
+
 .perfil .foto {
   width: 38px;
   height: 38px;

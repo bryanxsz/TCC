@@ -10,17 +10,40 @@ include "../conexao.php";
 // Módulo atual
 $modulo = "líbero";
 
-// Busca aulas
+// Busca aulas existentes
 $sql = "SELECT * FROM aulas WHERE modulo='$modulo' ORDER BY numero_aula ASC";
 $result = $conn->query($sql);
 
+// Se não houver aulas, cria 3 aulas padrão
 if ($result->num_rows == 0) {
-    $aulas = []; // Nenhuma aula cadastrada
-} else {
-    $aulas = $result->fetch_all(MYSQLI_ASSOC);
+    $aulasPadrao = [
+        ['numero_aula' => 1, 'nome_aula' => 'Aula 1', 'titulo' => '', 'link_video' => ''],
+        ['numero_aula' => 2, 'nome_aula' => 'Aula 2', 'titulo' => '', 'link_video' => ''],
+        ['numero_aula' => 3, 'nome_aula' => 'Aula 3', 'titulo' => '', 'link_video' => ''],
+    ];
+
+    foreach ($aulasPadrao as $aula) {
+        $stmt = $conn->prepare("INSERT INTO aulas (modulo, numero_aula, nome_aula, titulo, link_video, professor_nome, professor_email) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sisssss",
+            $modulo,
+            $aula['numero_aula'],
+            $aula['nome_aula'],
+            $aula['titulo'],
+            $aula['link_video'],
+            $aula['professor_nome'],
+            $aula['professor_email']
+        );
+        $stmt->execute();
+    }
+
+    // Recarrega as aulas após inserir
+    $result = $conn->query("SELECT * FROM aulas WHERE modulo='$modulo' ORDER BY numero_aula ASC");
 }
 
-// Pega a primeira aula como padrão
+// Carrega todas as aulas
+$aulas = $result->fetch_all(MYSQLI_ASSOC);
+
+// Pega a primeira aula como inicial
 $aulaInicial = $aulas[0] ?? null;
 ?>
 <!DOCTYPE html>
@@ -37,7 +60,7 @@ $aulaInicial = $aulas[0] ?? null;
         <img src="../imagens/logospike.png" class="logo" alt="Logo">
     </a>
     <h1>Aulas</h1>
-    <div class="perfil">
+    <div style="cursor: pointer" onclick="window.location.href='../editar_conta.php'" class="perfil">
         <img src="../imagens/images.png" class="foto" alt="Foto do usuário">
         <div>
             <strong>
@@ -116,7 +139,7 @@ const professorEmail = document.getElementById('professorEmail');
 // Progresso local
 const progresso = JSON.parse(localStorage.getItem('aulasVistas')) || {};
 
-// Função para atualizar status visual
+// Atualiza status visual
 function atualizarStatus() {
     aulas.forEach(aula => {
         const status = aula.querySelector('.status');
@@ -151,7 +174,6 @@ aulas.forEach(aula => {
         atualizarStatus();
     });
 
-    // Clique na bolinha de status
     aula.querySelector('.status').addEventListener('click', e => {
         e.stopPropagation();
         const id = aula.dataset.id;

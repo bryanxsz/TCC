@@ -11,13 +11,15 @@
 session_start();
 if (!isset($_SESSION['user_name'])) {
     header("Location: login.html");
+    
     exit();
 }
+
 ?>
 <header class="topo">
   <img src="./imagens/logospike.png" class="logo" alt="Logo">
   <h1>Módulos</h1>
-  <div class="perfil">
+  <div style="cursor: pointer" onclick="window.location.href='editar_conta.php'" class="perfil">
     <img src="./imagens/images.png" class="foto" alt="Foto do usuário">
     <div>
       <strong>

@@ -1,15 +1,6 @@
 CREATE DATABASE IF NOT EXISTS pj_spike;
 USE pj_spike;
 
-CREATE TABLE aulas (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  modulo VARCHAR(100) NOT NULL,
-  numero_aula INT NOT NULL,
-  nome_aula VARCHAR(255) DEFAULT '',
-  titulo VARCHAR(255) DEFAULT '',
-  link_video TEXT DEFAULT ''
-);
-
 CREATE TABLE sistema_de_pagamento (
     id_sistema INT PRIMARY KEY AUTO_INCREMENT,
     metodo VARCHAR(50),
@@ -22,7 +13,19 @@ CREATE TABLE usuario (
     email VARCHAR(50),
     senha VARCHAR(50),
     tipo CHAR(1),
-    ativo tinyint(4) not null default '0'
+    ativo tinyint(4) not null default '0',
+    telefone VARCHAR(20) null
+);
+
+CREATE TABLE aulas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  modulo VARCHAR(100) NOT NULL,
+  numero_aula INT NOT NULL,
+  nome_aula VARCHAR(255) DEFAULT '',
+  titulo VARCHAR(255) DEFAULT '',
+  link_video TEXT DEFAULT '',
+  professor_nome VARCHAR(100) DEFAULT '',
+  professor_email VARCHAR(100) DEFAULT ''
 );
 
 CREATE TABLE pagamento (
