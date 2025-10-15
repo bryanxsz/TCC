@@ -26,11 +26,11 @@ if (!isset($_SESSION['user_name'])) {
         Olá, 
         <?php 
           if ($_SESSION['user_tipo'] == '1') {
-              echo "Aluno, ";
+              echo "Aluno ";
           } else {
-              echo "Professor, ";
+              echo "Professor ";
           }
-          echo htmlspecialchars($_SESSION['user_name'], ENT_QUOTES, 'UTF-8'); 
+          echo ucwords (htmlspecialchars($_SESSION['user_name'], ENT_QUOTES, 'UTF-8')); 
         ?>!
       </strong><br>
       <small>
@@ -54,7 +54,7 @@ if (!isset($_SESSION['user_name'])) {
       <h2>Fundamentos</h2>
       <div class="grid">
         <div class="card">
-          <img src="manchete.png" class="thumb" alt="Manchete">
+          <img src="./imagens/manchete.png" class="thumb" alt="Manchete">
           <div class="info">
             <h3>Manchete</h3>
             <div class="barra"><div style="width:60%"></div></div>
@@ -63,7 +63,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div class="card">
-          <img src="toque.png" class="thumb" alt="Toque">
+          <img src="./imagens/toque.png" class="thumb" alt="Toque">
           <div class="info">
             <h3>Toque</h3>
             <div class="barra"><div style="width:45%"></div></div>
@@ -72,7 +72,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div class="card">
-          <img src="saque.png" class="thumb" alt="Saque">
+          <img src="./imagens/saque.png" class="thumb" alt="Saque">
           <div class="info">
             <h3>Saque</h3>
             <div class="barra"><div style="width:75%"></div></div>
@@ -81,7 +81,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div class="card">
-          <img src="ataque.png" class="thumb" alt="Ataque">
+          <img src="./imagens/ataque.png" class="thumb" alt="Ataque">
           <div class="info">
             <h3>Ataque</h3>
             <div class="barra"><div style="width:30%"></div></div>
@@ -90,7 +90,7 @@ if (!isset($_SESSION['user_name'])) {
         </div>
 
         <div class="card">
-          <img src="bloqueio.png" class="thumb" alt="Bloqueio">
+          <img src="./imagens/bloqueio.png"  class="thumb" alt="Bloqueio">
           <div class="info">
             <h3>Bloqueio</h3>
             <div class="barra"><div style="width:50%"></div></div>
@@ -98,15 +98,6 @@ if (!isset($_SESSION['user_name'])) {
           </div>
         </div>
 
-        <div class="card">
-          <img src="defesa.png" class="thumb" alt="Defesa">
-          <div class="info">
-            <h3>Defesa</h3>
-            <div class="barra"><div style="width:40%"></div></div>
-            <a href="./aulas/defesa.php" class="btn">Acessar</a>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- POSIÇÕES -->

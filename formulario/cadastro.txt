@@ -31,3 +31,7 @@ Nome: Vinicius | Email: vinicius@gmail.com | Senha: 1212 | Tipo: 2
 Nome: Abner | Email: abnerrrksjkk@gmail.com | Senha: 1212 | Tipo: 1
 Nome: abner | Email: abner@gmail.com | Senha: 1313 | Tipo: 2
 Nome: Anderson | Email: anderson@gmail.com | Senha: 1212 | Tipo: 2
+Nome: bryan | Email: bryan@gmail.com | Senha: 1212 | Tipo: 1
+Nome: anderson | Email: anderson@gmail.com | Senha: 1212 | Tipo: 2
+Nome: Vinicius | Email: vinicius@gmail.com | Senha: 1212 | Tipo: 2
+Nome: Victor | Email: victorflaluce@gmail.com | Senha: 123 | Tipo: 1
