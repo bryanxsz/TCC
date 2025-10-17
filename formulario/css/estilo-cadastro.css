@@ -1,3 +1,38 @@
+/* TOPO */
+.topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #ffc446;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    z-index: 10;
+    padding: 15px 15px 15px 2px;
+
+}
+
+.topo .logo { 
+  height: 50px;
+  width: 50px;
+  background-color: black; 
+  padding: 7px; 
+  margin-bottom: -10px; 
+  border-radius: 10%
+}
+
+.topo h1 {
+    flex-grow: 1;
+    text-align: center;
+    color: black;
+    font-size: 22px;
+    margin: 0;
+}
+
+
+/* Ajuste para que o conteúdo não fique atrás do topo */
 body {
     font-family: Arial, sans-serif;
     background-color: #ffc446;
@@ -5,34 +40,40 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-  }
-  .container {
+    padding-top: 70px; /* espaço para o topo fixo */
+    margin: 0;
+}
+
+.container {
     background-color: #ff6a00;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
     width: 350px;
     padding-right: 50px;
+}
 
-  }
-  h1 {
+.container h1 {
     text-align: center;
     color: white;
-  }
-  label {
+}
+
+label {
     display: block;
     margin-top: 15px;
     font-weight: bold;
     color: white;
-  }
-  input, select {
+}
+
+input, select {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
-  }
-  button {
+}
+
+button {
     margin: 20px auto;   
     display: block;      
     width: 300px;  
@@ -44,25 +85,29 @@ body {
     font-size: 16px;
     cursor: pointer;
     margin-bottom: 20px;
-  }
-  a {
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline; 
-  }
-  button:hover {
+}
+
+button:hover {
     background-color: rgba(255, 0, 0, 0.3);
     transition: 1s;
-  }
-  .radio-group {
+}
+
+a {
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+}
+
+a:hover {
+    text-decoration: underline; 
+}
+
+.radio-group {
     display: flex;
     align-items: center;
     gap: 10px; 
-  }
-  .opt {
+}
+
+.opt {
     font-size: 14px;
-  }
-  a {
-    padding: 10px;
-  }
+}

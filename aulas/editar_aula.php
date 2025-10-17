@@ -61,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       border-radius: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       width: 400px;
+      
     }
 
     .form-container h1 {
@@ -107,9 +108,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     button:hover {
       background: #400000;
     }
+
   </style>
 </head>
 <body>
+
   <div class="form-container">
     <h1>Editar <?php echo htmlspecialchars($aula['nome_aula']); ?></h1>
 

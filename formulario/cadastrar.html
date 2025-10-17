@@ -7,43 +7,53 @@
     <link rel="stylesheet" href="css/estilo-cadastro.css">
 </head>
 <body>
+
+    <!-- TOPO -->
+    <header class="topo">
+        <a href="../index.php">
+            <img src="../imagens/logospike.png" class="logo" alt="Logo">
+        </a>
+        
+    </header>
+
+    <!-- CONTEÚDO -->
     <div class="container">
-        <h1>Cadastro</h1>
+        <h1 class="">Cadastro</h1>
         <form id="meuForm" action="cadastro.php" method="post">
             <label for="nome">Nome</label>
             <input type="text" name="nome" id="nome" required>
+
             <label for="email">Email</label>
-            <input type="text" name="email" id="email"
-            required>
+            <input type="text" name="email" id="email" required>
+
             <label for="senha">Senha</label>
             <input type="password" name="senha" id="senha" required>
+
             <label for="confirmarSenha">Confirmar senha</label>
             <input type="password" name="confirmarSenha" id="confirmarSenha" required>
+
             <label for="sou">Sou:</label>
-            
             <div class="radio-group">
-            <label for="tipo" class="opt">Aluno</label>
-            <input type="radio" name="tipo" id="tipo" value="1" required>
-            <label for="tipo" class="opt">Professor</label>
-            <input type="radio" name="tipo" id="tipo" value="2">
+                <label class="opt"><input type="radio" name="tipo" value="1" required> Aluno</label>
+                <label class="opt"><input type="radio" name="tipo" value="2"> Professor</label>
             </div>
 
             <button class="btn-cadastrar" type="submit">Cadastrar</button>
-            <a href="../login.html">Login</a>
+            <a href="../login.html">Já possui Cadastro? Clique aqui</a>
         </form>
     </div>
-    
-<script>
-    document.getElementById('meuForm').addEventListener('submit', function(event) {
-        const senha = document.getElementById('senha').value;
-        const confirmarSenha = document.getElementById('confirmarSenha').value;
-    
-        if (senha !== confirmarSenha) {
-          event.preventDefault(); // Impede o envio do form
-          alert('As senhas não são iguais.');
-        }
-      });       
-</script>
-      
+
+    <script>
+        document.getElementById('meuForm').addEventListener('submit', function(event) {
+            const senha = document.getElementById('senha').value;
+            const confirmarSenha = document.getElementById('confirmarSenha').value;
+
+            if (senha !== confirmarSenha) {
+                event.preventDefault();
+                alert('As senhas não são iguais.');
+            }
+        });
+    </script>
+
 </body>
 </html>

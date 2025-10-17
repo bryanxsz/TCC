@@ -109,9 +109,40 @@ button:hover {
     margin-bottom: 10px;
     color: #00ff00;
 }
+.topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #ffc446;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    z-index: 10;
+    padding: 15px 15px 15px 5px;
+
+}
+
+.topo .logo { 
+  height: 50px;
+  width: 50px;
+  background-color: black; 
+  padding: 7px; 
+  margin-bottom: -10px; 
+  border-radius: 10%
+}
+
 </style>
 </head>
 <body>
+    
+    <header class="topo">
+        <a href="modulos.php">
+            <img src="./imagens/logospike.png" class="logo" alt="Logo">
+        </a>
+        
+    </header>
 
 <div class="container">
     <h1>Editar Conta</h1>
