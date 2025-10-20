@@ -5,6 +5,7 @@
   <title>Módulos - Voleibol</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/modulos.css">
+  <link rel="icon" href="./imagens/logospike.png" type="image/x-icon">
 </head>
 <body>
   <?php

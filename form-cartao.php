@@ -4,6 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Demo Cartão</title>
+<link rel="icon" href="./imagens/logospike.png" type="image/x-icon">
 <style>
   :root{
     --card-w:320px;
@@ -117,6 +118,9 @@ $row = $result->fetch_assoc();
 if (!$row || $row['ativo'] == 1 || $row['tipo'] == 2) {
     header('Location: modulos.php');
     exit;
+}elseif ($row['tipo'] == 3) {
+  header('Location: painel.php');
+  exit;
 }
 ?>
 

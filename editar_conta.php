@@ -51,6 +51,7 @@ $user = $result->fetch_assoc();
 <meta charset="UTF-8">
 <title>Editar Conta</title>
 <link rel="stylesheet" href="style.css">
+<link rel="icon" href="./imagens/logospike.png" type="image/x-icon">
 <style>
 /* Adaptação do CSS fornecido */
 body {
