@@ -16,35 +16,22 @@ if (!isset($_SESSION['user_name'])) {
 }
 
 ?>
-<header class="topo">
-  <img src="./imagens/logospike.png" class="logo" alt="Logo">
-  <h1>Módulos</h1>
-  <div style="cursor: pointer" onclick="window.location.href='editar_conta.php'" class="perfil">
-    <img src="./imagens/images.png" class="foto" alt="Foto do usuário">
-    <div>
-      <strong>
-        Olá, 
-        <?php 
-          if ($_SESSION['user_tipo'] == '1') {
-              echo "Aluno ";
-          } else {
-              echo "Professor ";
-          }
-          echo ucwords (htmlspecialchars($_SESSION['user_name'], ENT_QUOTES, 'UTF-8')); 
-        ?>!
-      </strong><br>
-      <small>
-        <?php 
-          echo isset($_SESSION['user_email']) 
-               ? htmlspecialchars($_SESSION['user_email'], ENT_QUOTES, 'UTF-8') 
-               : "Email não disponível"; 
-        ?>
-      </small>
-            <br>
-      <small><a href="logout.php">Sair</a></small>
+
+ <header class="topo">
+    <a href="./modulos.php">
+        <img src="./imagens/logospike.png" class="logo" alt="Logo">
+    </a>
+    <h1>Módulos</h1>
+    <div style="cursor: pointer" onclick="window.location.href='./editar_conta.php'" class="perfil">
+        <img src="./imagens/images.png" class="foto" alt="Foto do usuário">
+        <div>
+            <strong>
+                Olá, <?php echo ($_SESSION['user_tipo'] == '1' ? "Aluno " : "Professor ") . ucwords(htmlspecialchars($_SESSION['user_name'])); ?>!
+            </strong><br>
+            <small><?php echo htmlspecialchars($_SESSION['user_email']); ?></small><br>
+            <small><a href="logout.php">Sair</a></small>
+        </div>
     </div>
-  </div>
-  
 </header>
 
 

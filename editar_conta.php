@@ -114,13 +114,13 @@ button:hover {
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
     background-color: #ffc446;
     display: flex;
     align-items: center;
     border-bottom: 1px solid black;
     z-index: 10;
-    padding: 15px 15px 15px 5px;
+    padding: 20px;
+    padding-bottom: 10px
 
 }
 
@@ -129,8 +129,8 @@ button:hover {
   width: 50px;
   background-color: black; 
   padding: 7px; 
-  margin-bottom: -10px; 
-  border-radius: 10%
+  margin: 0px;
+  border-radius: 10%;
 }
 
 </style>

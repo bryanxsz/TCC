@@ -16,6 +16,7 @@ body {
 
 .logo {
   height: 50px;
+  width: 50px;
   background-color: black; 
   padding: 7px; 
   margin-bottom: -10px; 
@@ -23,8 +24,10 @@ body {
 }
 
 .topo h1 {
-  color: black;
-  font-size: 22px;
+  text-align: center;
+    color: black;
+    font-size: 22px;
+    margin: 0;
 }
 
 .perfil {
