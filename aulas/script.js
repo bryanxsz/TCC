@@ -38,8 +38,9 @@ aulas.forEach(aula => {
         video.src = aula.dataset.video;
 
         professorNome.textContent = aula.dataset.professor_nome || 'Professor não definido';
-        professorEmail.textContent = aula.dataset.professor_email || '';
-        professorTelefone.textContent = aula.dataset.professor_telefone || '';
+        professorEmail.innerHTML = `<small><strong>Email: </strong>${aula.dataset.professor_email || ''}</small>`;
+        professorTelefone.innerHTML = `<small><strong>Telefone: </strong>${aula.dataset.professor_telefone || ''}</small>`;
+
 
         if (btnEditar) {
             btnEditar.href = 'editar_aula.php?id=' + aula.dataset.id + '&voltar=' + encodeURIComponent(window.location.pathname);
