@@ -8,15 +8,6 @@ if (!isset($_SESSION['user_name'])) {
   exit();
 }
 
-if ($row['tipo'] == 2) {
-
-}else {
-    echo "<script>
-                alert('Acesso NEGADO!');
-                window.history.back();
-              </script>";
-        exit;
-}
 
 // Pega o ID da aula
 $id = $_GET['id'] ?? 0;
@@ -31,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $link_video = $_POST['link_video'];
   $professor_nome = $_SESSION['user_name'];
   $professor_email = $_SESSION['user_email'];
+  $professor_telefone = $_SESSION['user_telefone'] == '' ? "Não definido " : $_SESSION['user_telefone'];
 
   // Atualiza a aula com os dados e o nome/email do professor
   $sql = "UPDATE aulas 
@@ -38,7 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               nome_aula='$nome_aula', 
               link_video='$link_video',
               professor_nome='$professor_nome', 
-              professor_email='$professor_email'
+              professor_email='$professor_email',
+              professor_telefone='$professor_telefone'
           WHERE id=$id";
   $conn->query($sql);
 

@@ -38,3 +38,5 @@ Nome: Victor | Email: victorflaluce@gmail.com | Senha: 123 | Tipo: 1
 Nome: Anderson | Email: anderson@gmail.com | Senha: 1212 | Tipo: 2
 Nome: Bryan | Email: bryan@gmail.com | Senha: 1212 | Tipo: 1
 Nome: Anderson | Email: anderson@gmail.com | Senha: 1212 | Tipo: 2
+Nome: Vinicius | Email: vinicius@gmail.com | Senha: 1212 | Tipo: 2
+Nome: Carlos | Email: carlos@gmail.com | Senha: 1212 | Tipo: 2

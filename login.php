@@ -53,6 +53,7 @@ if ($row && $row['senha'] == $senha) {
     $_SESSION['user_name'] = $row['nome'];
     $_SESSION['user_tipo'] = $row['tipo'];
     $_SESSION['user_email'] = $row['email'];
+    $_SESSION['user_telefone'] = $row['telefone'];
 
 
     if($row['tipo'] == 3) {

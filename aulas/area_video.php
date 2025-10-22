@@ -28,7 +28,18 @@
             <img class="professor-foto" src="../imagens/images.png" alt="Foto do Professor">
             <div>
                 <strong id="professorNome"><?php echo ucwords(htmlspecialchars($aulaInicial['professor_nome'] ?? 'Professor não definido')); ?>    </strong><br>
-                <small id="professorEmail"><?php echo htmlspecialchars($aulaInicial['professor_email'] ?? ''); ?></small>
+                <small id="professorEmail"><strong>Email: </strong><?php echo htmlspecialchars($aulaInicial['professor_email'] ?? ''); ?></small><br>
+                <small id="professorTelefone"><strong>Telefone: </strong>
+                    
+                <?php
+                if(isset($aula['professor_telefone']) ) {
+                    echo 'Não definido'; 
+                }else {
+                echo $aula['professor_telefone']; 
+                }
+                ?>
+                
+            </small>
             </div>
         </div>
     </section>

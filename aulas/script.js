@@ -7,6 +7,7 @@ const checkVisto = document.getElementById('checkVisto');
 const btnEditar = document.getElementById('btnEditar');
 const professorNome = document.getElementById('professorNome');
 const professorEmail = document.getElementById('professorEmail');
+const professorTelefone = document.getElementById('professorTelefone');
 
 // Progresso local
 const progresso = JSON.parse(localStorage.getItem('aulasVistas')) || {};
@@ -38,6 +39,7 @@ aulas.forEach(aula => {
 
         professorNome.textContent = aula.dataset.professor_nome || 'Professor não definido';
         professorEmail.textContent = aula.dataset.professor_email || '';
+        professorTelefone.textContent = aula.dataset.professor_telefone || '';
 
         if (btnEditar) {
             btnEditar.href = 'editar_aula.php?id=' + aula.dataset.id + '&voltar=' + encodeURIComponent(window.location.pathname);
