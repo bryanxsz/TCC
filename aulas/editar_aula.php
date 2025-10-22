@@ -8,6 +8,16 @@ if (!isset($_SESSION['user_name'])) {
   exit();
 }
 
+if ($row['tipo'] == 2) {
+
+}else {
+    echo "<script>
+                alert('Acesso NEGADO!');
+                window.history.back();
+              </script>";
+        exit;
+}
+
 // Pega o ID da aula
 $id = $_GET['id'] ?? 0;
 $voltar = $_GET['voltar'] ?? '../modulos.php';

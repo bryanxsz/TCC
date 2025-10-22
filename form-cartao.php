@@ -122,6 +122,7 @@ if (!$row || $row['ativo'] == 1 || $row['tipo'] == 2) {
   header('Location: painel.php');
   exit;
 }
+
 ?>
 
 

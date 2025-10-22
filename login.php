@@ -54,8 +54,10 @@ if ($row && $row['senha'] == $senha) {
     $_SESSION['user_tipo'] = $row['tipo'];
     $_SESSION['user_email'] = $row['email'];
 
-    // Verifica o campo 'ativo'
-    if (isset($row['ativo'])) {
+
+    if($row['tipo'] == 3) {
+        header('Location: painel.php');
+    } elseif (isset($row['ativo'])) {
         if ($row['ativo'] == 1) {
             // Usuário ativo -> tela inicial
             header('Location: modulos.php');
@@ -73,7 +75,11 @@ if ($row && $row['senha'] == $senha) {
 
 } else {
     echo "Usuário ou senha inválida!";
-}
+} 
+    // Verifica o campo 'ativo'
+    
+
+
 
 $stmt->close();
 $conn->close();
