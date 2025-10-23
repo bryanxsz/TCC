@@ -14,7 +14,7 @@ CREATE TABLE usuario (
     senha VARCHAR(50),
     tipo CHAR(1),
     ativo tinyint(4) not null default '0',
-    telefone VARCHAR(20) null
+    telefone VARCHAR(20) null DEFAULT 'Não definido'
 );
 
 CREATE TABLE aulas (
