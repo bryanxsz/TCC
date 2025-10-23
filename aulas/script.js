@@ -37,9 +37,9 @@ aulas.forEach(aula => {
         titulo.textContent = aula.dataset.titulo;
         video.src = aula.dataset.video;
 
-        professorNome.textContent = aula.dataset.professor_nome || 'Professor não definido';
-        professorEmail.innerHTML = `<small><strong>Email: </strong>${aula.dataset.professor_email || ''}</small>`;
-        professorTelefone.innerHTML = `<small><strong>Telefone: </strong>${aula.dataset.professor_telefone || ''}</small>`;
+        professorNome.innerHTML = `<small class="infoprof" ><strong>Professor: </strong>${aula.dataset.professor_nome || 'Não definido'}</small>`;
+        professorEmail.innerHTML = `<small class="info" ><strong>Email: </strong>${aula.dataset.professor_email || 'Não definido'}</small>`;
+        professorTelefone.innerHTML = `<small class="info" ><strong>Telefone: </strong>${aula.dataset.professor_telefone || 'Não definido'}</small>`;
 
 
         if (btnEditar) {

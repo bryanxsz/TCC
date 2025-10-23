@@ -25,7 +25,8 @@ CREATE TABLE aulas (
   titulo VARCHAR(255) DEFAULT '',
   link_video TEXT DEFAULT '',
   professor_nome VARCHAR(100) DEFAULT '',
-  professor_email VARCHAR(100) DEFAULT ''
+  professor_email VARCHAR(100) DEFAULT '',
+  professor_telefone VARCHAR(20) DEFAULT ''
 );
 
 CREATE TABLE pagamento (

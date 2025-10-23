@@ -24,7 +24,7 @@ if ($result->num_rows == 0) {
 
     foreach ($aulasPadrao as $aula) {
         $stmt = $conn->prepare("INSERT INTO aulas (modulo, numero_aula, nome_aula, titulo, link_video, professor_nome, professor_email, professor_telefone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sisssss",
+        $stmt->bind_param("sissssss",
             $modulo,
             $aula['numero_aula'],
             $aula['nome_aula'],

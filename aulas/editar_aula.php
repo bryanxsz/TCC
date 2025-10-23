@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $link_video = $_POST['link_video'];
   $professor_nome = $_SESSION['user_name'];
   $professor_email = $_SESSION['user_email'];
-  $professor_telefone = $_SESSION['user_telefone'] == '' ? "Não definido " : $_SESSION['user_telefone'];
+  $professor_telefone = $_SESSION['user_telefone'];
 
   // Atualiza a aula com os dados e o nome/email do professor
   $sql = "UPDATE aulas 
