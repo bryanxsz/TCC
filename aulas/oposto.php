@@ -23,15 +23,16 @@ if ($result->num_rows == 0) {
     ];
 
     foreach ($aulasPadrao as $aula) {
-        $stmt = $conn->prepare("INSERT INTO aulas (modulo, numero_aula, nome_aula, titulo, link_video, professor_nome, professor_email) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sisssss",
+        $stmt = $conn->prepare("INSERT INTO aulas (modulo, numero_aula, nome_aula, titulo, link_video, professor_nome, professor_email, professor_telefone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sissssss",
             $modulo,
             $aula['numero_aula'],
             $aula['nome_aula'],
             $aula['titulo'],
             $aula['link_video'],
             $aula['professor_nome'],
-            $aula['professor_email']
+            $aula['professor_email'],
+            $aula['professor_telefone']
         );
         $stmt->execute();
     }
