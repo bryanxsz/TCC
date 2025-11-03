@@ -20,8 +20,9 @@ if ($result->num_rows == 0) {
         ['numero_aula' => 1, 'nome_aula' => 'Aula 1', 'titulo' => '', 'link_video' => ''],
         ['numero_aula' => 2, 'nome_aula' => 'Aula 2', 'titulo' => '', 'link_video' => ''],
         ['numero_aula' => 3, 'nome_aula' => 'Aula 3', 'titulo' => '', 'link_video' => ''],
+        ['numero_aula' => 4, 'nome_aula' => 'Aula 4', 'titulo' => '', 'link_video' => '']
     ];
-
+    
     foreach ($aulasPadrao as $aula) {
         $stmt = $conn->prepare("INSERT INTO aulas (modulo, numero_aula, nome_aula, titulo, link_video, professor_nome, professor_email, professor_telefone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sissssss",
