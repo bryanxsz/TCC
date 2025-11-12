@@ -182,10 +182,13 @@ button:hover {
 <body>
 
 <header class="topo">
-    <a href="../modulos.php">
+    <a href="javascript:history.back()"
+
+href="../aulas/<?php echo $moduloSemAcento; ?>.php">
+
         <img src="../imagens/logospike.png" class="logo" alt="Logo">
     </a>
-    <h1>Aulas</h1>
+    <h1>Módulo: <?php echo ucwords(htmlspecialchars($aula['modulo'])); ?> </h1>
     <div style="cursor: pointer" onclick="window.location.href='../editar_conta.php'" class="perfil">
         <img src="../imagens/images.png" class="foto" alt="Foto do usuário">
         <div>
@@ -202,7 +205,7 @@ button:hover {
 <div class="form-container">
 
   <!-- Agora o H1 mostra o nome do módulo -->
-  <h1>Editar <?php echo htmlspecialchars($aula['nome_aula']); ?> Módulo: <?php echo htmlspecialchars($aula['modulo']); ?></h1>
+  <h1>Editar <?php echo htmlspecialchars($aula['nome_aula']); ?> </h1>
 
   <form method="POST">
     <label>Nome da Aula:</label>

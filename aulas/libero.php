@@ -91,7 +91,7 @@ $canEdit = ($usuario_tipo == '2') ? true : false; // boolean flag para o front-e
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Aulas - <?php echo ucfirst($modulo); ?></title>
+    <title>Aulas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="aulas.css">
 </head>
@@ -393,12 +393,12 @@ atualizarStatus();
 if (canEdit) {
     // cria controles visuais simples (botões pequenos) sem alterar seu CSS original
     const addBtn = document.createElement('button');
-    addBtn.textContent = 'Adicionar aula';
+    addBtn.textContent = '➕ Adicionar aula';
     addBtn.className = 'btn-adicionar-aula';
     addBtn.style.marginRight = '8px';
 
     const delBtn = document.createElement('button');
-    delBtn.textContent = 'Excluir aula ativa';
+    delBtn.textContent = '❌ Excluir aula atual';
     delBtn.className = 'btn-excluir-aula';
 
     editorControls.appendChild(addBtn);
@@ -443,7 +443,7 @@ if (canEdit) {
             }
         } catch (err) {
             console.error(err);
-            alert('Aula adicionada!.');
+            alert('Aula adicionada!');
             window.location.reload();
         }
     });
@@ -485,7 +485,7 @@ if (canEdit) {
             }
         } catch (err) {
             console.error(err);
-            alert('Aula excluida!.');
+            alert('Aula excluida!');
             window.location.reload();
         }
     });

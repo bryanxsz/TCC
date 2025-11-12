@@ -234,3 +234,24 @@ body {
 
 }
 
+
+/*ADICIONAR AULA*/
+
+.btn-adicionar-aula, .btn-excluir-aula {
+  background: black;
+  color: white;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-top: 0;
+  text-align: center;
+}
+
+.btn-adicionar-aula:hover, .btn-excluir-aula:hover {
+  background: rgb(32, 32, 32);
+  transition: 0.5s;
+  cursor: pointer;
+
+}
+
+

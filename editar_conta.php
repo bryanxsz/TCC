@@ -139,7 +139,7 @@ button:hover {
 <body>
     
     <header class="topo">
-        <a href="modulos.php">
+        <a href="javascript:history.back()">
             <img src="./imagens/logospike.png" class="logo" alt="Logo">
         </a>
         
