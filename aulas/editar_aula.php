@@ -8,13 +8,12 @@ if (!isset($_SESSION['user_name'])) {
   exit();
 }
 
-
 // Pega o ID da aula
 $id = $_GET['id'] ?? 0;
 $voltar = $_GET['voltar'] ?? '../modulos.php';
 
-// Busca a aula no banco
-$aula = $conn->query("SELECT * FROM aulas WHERE id=$id")->fetch_assoc();
+// Busca a aula no banco (agora inclui o campo modulo)
+$aula = $conn->query("SELECT id, nome_aula, titulo, link_video, modulo FROM aulas WHERE id=$id")->fetch_assoc();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $titulo = $_POST['titulo'];
@@ -24,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $professor_email = $_SESSION['user_email'];
   $professor_telefone = $_SESSION['user_telefone'];
 
-  // Atualiza a aula com os dados e o nome/email do professor
   $sql = "UPDATE aulas 
           SET titulo='$titulo', 
               nome_aula='$nome_aula', 
@@ -35,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           WHERE id=$id";
   $conn->query($sql);
 
-  // Redireciona de volta para a página anterior
   header("Location: $voltar");
   exit;
 }
@@ -44,93 +41,182 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Editar Aula</title>
-  <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      background-color: #ffc446;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-      padding-top: 50px;
-    }
+<meta charset="UTF-8">
+<title>Editar Aula</title>
+<style>
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  background-color: #ffc446;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding-top: 110px; /* espaço para o topo fixo */
+}
 
-    .form-container {
-      background: white;
-      padding: 30px 50px;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      width: 400px;
-      
-    }
+/* HEADER FIXO */
+/* HEADER FIXO */
+.topo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
 
-    .form-container h1 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #222;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: 600;
-      color: #222;
-    }
+  background-color: #ffc446;
+  border-bottom: 1px solid black;
+  padding: 15px 20px;
 
-    input[type="text"] {
-      width: 100%;
-      padding: 10px 15px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      border: 1px solid #ccc;
-      font-size: 15px;
-      transition: 0.3s;
-    }
+  box-sizing: border-box;
+}
 
-    input[type="text"]:focus {
-      border-color: #400000;
-      outline: none;
-    }
+/* Garantir que os itens não se mexam */
+.topo > div,
+.logo,
+.perfil {
+  flex-shrink: 0;
+}
 
-    button {
-      width: 100%;
-      background: black;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 25px;
-      font-weight: 600;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+/* Logo */
+.logo {
+  height: 50px;
+  width: 50px;
+  background-color: black;
+  padding: 7px;
+  border-radius: 10%;
+}
 
-    button:hover {
-      background: #400000;
-    }
+/* Título central fixo */
+.topo h1 {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 22px;
+  color: black;
+  margin: 0;
+  pointer-events: none; /* Evita clique alterar alinhamento */
+}
 
-  </style>
+/* Perfil */
+.perfil {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  border: 1px solid black;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+
+  white-space: nowrap; /* impede quebra */
+}
+
+.perfil .foto {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+/* FORM */
+.form-container {
+  background: white;
+  margin-top: 200px;
+  padding: 30px 50px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  width: 400px;
+}
+
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #222;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: #400000;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  background: black;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #400000;
+}
+</style>
 </head>
+
 <body>
 
-  <div class="form-container">
-    <h1>Editar <?php echo htmlspecialchars($aula['nome_aula']); ?></h1>
+<header class="topo">
+    <a href="../modulos.php">
+        <img src="../imagens/logospike.png" class="logo" alt="Logo">
+    </a>
+    <h1>Aulas</h1>
+    <div style="cursor: pointer" onclick="window.location.href='../editar_conta.php'" class="perfil">
+        <img src="../imagens/images.png" class="foto" alt="Foto do usuário">
+        <div>
+            <strong>
+                Olá, <?php echo ($_SESSION['user_tipo'] == '1' ? "Aluno " : "Professor ") . ucwords(htmlspecialchars($_SESSION['user_name'])); ?>!
+            </strong><br>
+            <small><?php echo htmlspecialchars($_SESSION['user_email']); ?></small><br>
+            <small><a href="../logout.php">Sair</a></small>
+        </div>
+    </div>
+</header>
 
-    <form method="POST">
-      <label>Nome da Aula:</label>
-      <input type="text" name="nome_aula" value="<?php echo htmlspecialchars($aula['nome_aula']); ?>">
 
-      <label>Título:</label>
-      <input type="text" name="titulo" value="<?php echo htmlspecialchars($aula['titulo']); ?>">
+<div class="form-container">
 
-      <label>Link do Vídeo:</label>
-      <input type="text" name="link_video" value="<?php echo htmlspecialchars($aula['link_video']); ?>">
+  <!-- Agora o H1 mostra o nome do módulo -->
+  <h1>Editar <?php echo htmlspecialchars($aula['nome_aula']); ?> Módulo: <?php echo htmlspecialchars($aula['modulo']); ?></h1>
 
-      <button type="submit">Salvar</button>
-    </form>
-  </div>
+  <form method="POST">
+    <label>Nome da Aula:</label>
+    <input type="text" name="nome_aula" value="<?php echo htmlspecialchars($aula['nome_aula']); ?>">
+
+    <label>Título:</label>
+    <input type="text" name="titulo" value="<?php echo htmlspecialchars($aula['titulo']); ?>">
+
+    <label>Link do Vídeo:</label>
+    <input type="text" name="link_video" value="<?php echo htmlspecialchars($aula['link_video']); ?>">
+
+    <button type="submit">Salvar</button>
+  </form>
+</div>
+
 </body>
 </html>

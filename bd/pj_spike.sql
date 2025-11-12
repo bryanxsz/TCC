@@ -29,6 +29,16 @@ CREATE TABLE aulas (
   professor_telefone VARCHAR(20) DEFAULT ''
 );
 
+CREATE TABLE IF NOT EXISTS aulas_progresso (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT NOT NULL,
+  aula_id INT NOT NULL,
+  visto TINYINT(1) NOT NULL DEFAULT 0,
+  data_visto DATETIME DEFAULT NULL,
+  UNIQUE KEY ux_usuario_aula (usuario_id, aula_id),
+  INDEX idx_aula_id (aula_id)
+);
+
 CREATE TABLE pagamento (
     id_pagamento INT,
     id_usuario INT,
