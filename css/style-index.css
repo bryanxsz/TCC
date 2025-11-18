@@ -21,7 +21,8 @@ nav {
   padding: 20px;
   z-index: 1000; 
   background-color: #ffc446;  
-  width: 100%;       
+  width: 100%;    
+  height: 70px;   
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -30,12 +31,16 @@ nav {
 }
 
 .logo {
-  height: 50px;
-  width: 50px;
-  background-color: black; 
-  padding: 7px; 
-  margin-bottom: -10px; 
-  border-radius: 10%
+  height: 60px;
+  width: 60px;
+  background-color: black;
+  padding: 1px;
+  margin-bottom: -10px;
+  border-radius: 10%;
+  transform: scale(1.4); /* aumenta sem mexer no nav */
+  transform-origin: center; /* garante que cresça pro centro */
+  cursor: pointer;
+  margin-left: 20px;
 }
 
 .nav-menu {
@@ -131,11 +136,12 @@ nav {
 
 /* QUEM SOMOS */
 
+
 .carousel-slide {
   display: none;
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -159,7 +165,7 @@ nav {
   position: absolute;
   bottom: 40px;
   left: 40px;
-  max-width: 600px;
+  max-width: 800px;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 20px;
   z-index: 2;
@@ -180,7 +186,7 @@ nav {
 .carousel-container {
   position: relative;
   width: 100%;
-  max-height: 600px;
+ height: 800px;
 }
 
 .caption h3 {
@@ -305,6 +311,7 @@ h2 .titulo {
 }
 
 main {
+  margin-top: 60px;
   padding: 20px;
 }
 
@@ -319,6 +326,7 @@ section {
   margin: 0 auto;
   position: relative;
 }
+
 
 .depoimento {
   background: #f9f9f9;

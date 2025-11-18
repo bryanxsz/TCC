@@ -142,6 +142,7 @@
     </div>
   </div>
 </section>
+
 <section class="depo" id="depoimentos">
   <h2 style="color: white; font-size: 32px; margin-bottom: 40px; font-weight: bold; text-align: center;">DEPOIMENTOS</h2>
 
