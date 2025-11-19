@@ -122,7 +122,7 @@ button:hover {
     z-index: 10;
     padding: 20px;
     padding-bottom: 10px
-    height: 80px;
+    height: 100px;
 }
 
 .logo { 

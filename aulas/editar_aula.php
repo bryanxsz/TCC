@@ -62,16 +62,14 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 999;
-
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   background-color: #ffc446;
   border-bottom: 1px solid black;
   padding: 15px 20px;
-
+  height: 110px;
   box-sizing: border-box;
 }
 
@@ -84,11 +82,15 @@ body {
 
 /* Logo */
 .logo {
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
   background-color: black;
-  padding: 7px;
+  padding: 1px; 
+  margin: 0px;
   border-radius: 10%;
+  transform: scale(1.4); /* aumenta sem mexer no nav */
+  transform-origin: center; /* garante que cresça pro centro */
+  margin-left: 20px;
 }
 
 /* Título central fixo */
