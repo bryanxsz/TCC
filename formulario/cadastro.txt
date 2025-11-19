@@ -45,3 +45,5 @@ Nome: Bryan | Email: bryan@gmail.com | Senha: 12 | Tipo: 1
 Nome: Bryan | Email: bryan.matias@gmail.com | Senha: 12 | Tipo: 1
 Nome: Anderson | Email: anderson@gmail.com | Senha: 12 | Tipo: 2
 Nome: Bryan | Email: bryan@gmail.com | Senha: 12 | Tipo: 2
+Nome: Victor | Email: victor@gmail.com | Senha: 123 | Tipo: 2
+Nome: Laluce | Email: laluce@gmail.com | Senha: 123 | Tipo: 2

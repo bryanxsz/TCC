@@ -17,6 +17,19 @@ CREATE TABLE usuario (
     telefone VARCHAR(20) NULL DEFAULT 'Não definido'
 );
 
+CREATE TABLE aulas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  modulo VARCHAR(100) NOT NULL,
+  numero_aula INT NOT NULL,
+  nome_aula VARCHAR(255) DEFAULT '',
+  titulo VARCHAR(255) DEFAULT '',
+  link_video TEXT DEFAULT '',
+  professor_nome VARCHAR(100) DEFAULT '',
+  professor_email VARCHAR(100) DEFAULT '',
+  professor_telefone VARCHAR(20) DEFAULT ''
+);
+
+
 CREATE TABLE IF NOT EXISTS aulas_progresso (
   id INT AUTO_INCREMENT PRIMARY KEY,
   usuario_id INT NOT NULL,
@@ -41,66 +54,3 @@ INSERT INTO `pj_spike`.`usuario` (`id_usuario`, `nome`, `email`, `senha`, `tipo`
 INSERT INTO `pj_spike`.`sistema_de_pagamento` (`id_sistema`, `valor`) VALUES ('1', '99');
 
 
-CREATE TABLE pagamento (
-    id_pagamento INT,
-    id_usuario INT,
-    dataP DATE,
-    horaP TIME,
-    linkP VARCHAR(500),
-    confirmadaP BOOLEAN,
-    PRIMARY KEY (id_pagamento, id_usuario),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
-);
-
-CREATE TABLE agendamento (
-    id_agendamento INT PRIMARY KEY AUTO_INCREMENT,
-    dataR DATE,
-    horaR TIME,
-    linkR VARCHAR(255),
-    confirmadaR BOOLEAN
-);
-
-CREATE TABLE reuniao (
-    id_usuario INT,
-    id_agendamento INT,
-    PRIMARY KEY (id_usuario, id_agendamento),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
-    FOREIGN KEY (id_agendamento) REFERENCES agendamento(id_agendamento)
-);
-
-CREATE TABLE modulo (
-    id_modulo INT PRIMARY KEY,
-    nome VARCHAR(100)
-);
-
-CREATE TABLE aula (
-    id_aula INT PRIMARY KEY AUTO_INCREMENT,
-    id_usuario INT,
-    titulo VARCHAR(100),
-    descricao VARCHAR(500),
-    avaliacao DECIMAL(3,2),
-    video VARCHAR(500),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
-);
-
-CREATE TABLE comentario (
-    id_comentario INT PRIMARY KEY AUTO_INCREMENT,
-    id_usuario INT,
-    id_aula INT,
-    conteudo TEXT,
-    dataC DATE,
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
-    FOREIGN KEY (id_aula) REFERENCES aula(id_aula)
-);
-
-CREATE TABLE perfil (
-    id_perfil INT PRIMARY KEY AUTO_INCREMENT,
-    id_usuario INT,
-    id_aula INT,
-    id_comentario INT,
-    comentarios TEXT,
-    aulasSalvas TEXT,
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
-    FOREIGN KEY (id_aula) REFERENCES aula(id_aula),
-    FOREIGN KEY (id_comentario) REFERENCES comentario(id_comentario)
-);

@@ -122,16 +122,20 @@ button:hover {
     z-index: 10;
     padding: 20px;
     padding-bottom: 10px
-
+    height: 80px;
 }
 
-.topo .logo { 
-  height: 50px;
-  width: 50px;
+.logo { 
+  height: 60px;
+  width: 60px;
   background-color: black; 
-  padding: 7px; 
+  padding: 1px; 
   margin: 0px;
   border-radius: 10%;
+  transform: scale(1.4); /* aumenta sem mexer no nav */
+  transform-origin: center; /* garante que cresça pro centro */
+  margin-left: 20px;
+
 }
 
 </style>
