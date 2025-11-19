@@ -328,22 +328,21 @@ section {
 }
 
 
+
 .depoimento {
   background: #f9f9f9;
   border-radius: 20px;
   padding: 30px 25px 60px;
   box-shadow: 0 8px 20px rgba(255, 8, 8, 0.08);
   position: relative;
-  display: none;
+  display: flex; /* sempre visível agora */
   flex-direction: column;
   justify-content: space-between;
   border-bottom-left-radius: 100% 80px;
   border-bottom-right-radius: 100% 80px;
 }
 
-.depoimento.ativo {
-  display: flex;
-}
+
 
 .estrelas {
   color:  #400000;

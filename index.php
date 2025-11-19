@@ -144,52 +144,27 @@
 </section>
 
 <section class="depo" id="depoimentos">
-  <h2 style="color: white; font-size: 32px; margin-bottom: 40px; font-weight: bold; text-align: center;">DEPOIMENTOS</h2>
+  <h2 style="color: white; font-size: 32px; margin-bottom: 40px; font-weight: bold; text-align: center;">
+    DEPOIMENTOS
+  </h2>
 
   <div class="carrossel">
-    
-    <div class="depoimento ativo">
-      <div class="estrelas">★★★★★</div>
-      <p class="texto">
-        O Projeto Spike mudou minha visão sobre como ensinar e treinar voleibol. A didática é acessível, o conteúdo é direto, e o mais importante: funciona na prática!
-      </p>
-      <div class="autor">
-        <img src="./imagens/images.png" alt="Avatar" />
-        <div class="info">
-          <strong>Fábio Macedo</strong>
-          <span>Professor de Educação Física</span>
-        </div>
-      </div>
-      <div class="base-roxa"></div>
-    </div>
 
-    <div class="depoimento">
-      <div class="estrelas">★★★★★</div>
-      <p class="texto">
-        Eu não tinha acesso a um bom treinador na minha cidade. Com o Spike, consegui evoluir nos fundamentos, nos treinos físicos e no meu entendimento do jogo.
-      </p>
-      <div class="autor">
-        <img src="./imagens/images.png" alt="Avatar" />
-        <div class="info">
-          <strong>Juliana Costa</strong>
-          <span>Atleta Sub-17</span>
-        </div>
-      </div>
-      <div class="base-roxa"></div>
-    </div>
+    <div class="depoimento" id="depoArea">
+      <div class="estrelas" id="estrelas">★★★★★</div>
 
-    <div class="depoimento">
-      <div class="estrelas">★★★★★</div>
-      <p class="texto">
-        O curso é super completo! Vídeos objetivos, exercícios práticos e um suporte que realmente ajuda. Me sinto mais preparada para competir e crescer no esporte.
+      <p class="texto" id="texto"> <!-- texto do depoimento vem aqui -->
+         teste
       </p>
+
       <div class="autor">
-        <img src="./imagens/images.png" alt="Avatar" />
+        <img id="foto" src="imagens/images.png" alt="Avatar" />
         <div class="info">
-          <strong>Carlos Mendes</strong>
-          <span>Estudante de Educação Física</span>
+          <strong id="nome">teste</strong>
+          <span id="cargo">teste</span>
         </div>
       </div>
+
       <div class="base-roxa"></div>
     </div>
 
@@ -204,6 +179,7 @@
     </button>
   </div>
 </section>
+
 
 <?php
 
@@ -247,16 +223,92 @@ mysqli_close($conn);
     <p>&copy; 2025 Projeto Spike. Todos os direitos reservados.</p>
   </footer>
 
-  <script>
-    let indiceAtual = 0;
-    const depoimentos = document.querySelectorAll('.depoimento');
+<script>
+let depoimentoAtual = 1; // começa no ID 1
 
-    function mudarDepoimento(direcao) {
-      depoimentos[indiceAtual].classList.remove('ativo');
-      indiceAtual = (indiceAtual + direcao + depoimentos.length) % depoimentos.length;
-      depoimentos[indiceAtual].classList.add('ativo');
+document.addEventListener("DOMContentLoaded", () => {
+    carregarDepoimento(depoimentoAtual); // funciona com a nova assinatura (direcao opcional)
+});
+
+function carregarDepoimento(id, direcao = 1, tentativas = 0) {
+    console.log("Carregando ID:", id);
+
+    fetch(`get_depoimento.php?id=${id}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log("JSON recebido:", data);
+
+            // Se vier vazio (ID não existe)
+            if (!data || !data.id) {
+                console.warn("Depoimento não encontrado para ID:", id);
+                // reverte o depoimentoAtual para último válido (não avança para vazio)
+                depoimentoAtual -= direcao;
+                return;
+            }
+
+            // Se existir campo 'ativo' e não estiver ativo, pula para o próximo na mesma direção
+            // aceita '1' (string) ou 1 (number)
+            const ativo = Number(data.ativo);
+            if (ativo !== 1) {
+                console.warn(`Depoimento ID ${id} não está ativo (ativo=${data.ativo}). Pulando...`);
+                // proteção contra loop infinito: limite de tentativas
+                if (tentativas >= 100) { // 100 é arbitrário e seguro
+                    console.error("Número máximo de tentativas atingido. Parando busca por depoimentos ativos.");
+                    // reverte para último válido
+                    depoimentoAtual -= direcao;
+                    return;
+                }
+
+                // avança o ponteiro e tenta carregar o próximo
+                depoimentoAtual += direcao;
+                // Se o novo id ficou < 1, mantem 1 e para
+                if (depoimentoAtual < 1) {
+                    depoimentoAtual = 1;
+                    console.warn("Chegou ao início da lista, não há depoimentos ativos anteriores.");
+                    return;
+                }
+
+                // chamada recursiva para tentar o próximo ID (tentativas +1)
+                carregarDepoimento(depoimentoAtual, direcao, tentativas + 1);
+                return;
+            }
+
+            // Se está ativo, atualiza HTML
+            document.getElementById("nome").textContent = data.nome;
+            document.getElementById("cargo").textContent = data.cargo;
+            document.getElementById("texto").textContent = data.texto;
+            document.getElementById("foto").src = "imagens/images.png";
+
+            // Estrelas
+            document.getElementById("estrelas").textContent = "⭐".repeat(data.estrelas);
+
+            // tudo ok — depoimentoAtual já está no id correto (mantém consistência)
+        })
+        .catch(err => {
+            console.error("Erro ao carregar depoimento:", err);
+            // reverte caso a requisição lance erro e a ação tenha sido um avanço
+            // (não sabemos a direção aqui; melhor não mexer no depoimentoAtual)
+        });
+}
+
+function mudarDepoimento(direcao) {
+    depoimentoAtual += direcao;
+
+    if (depoimentoAtual < 1) {
+        depoimentoAtual = 1;
     }
-  </script>
+
+    // passa a direção para a função, assim ela sabe pular apenas para frente ou para trás
+    carregarDepoimento(depoimentoAtual, direcao);
+}
+
+
+
+</script>
+
+
+
+
 
   <script>
   const slides = document.querySelectorAll('.carousel-slide');

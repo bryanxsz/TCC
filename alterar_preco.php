@@ -8,6 +8,15 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 include 'conexao.php';
+
+$valor_atual = 0;
+
+$pega = $conn->query("SELECT valor FROM sistema_de_pagamento LIMIT 1");
+if ($pega && $pega->num_rows > 0) {
+    $valor_atual = $pega->fetch_assoc()['valor'];
+}
+
+
 $id = $_SESSION['user_id'];
 $sql = "SELECT ativo, tipo FROM usuario WHERE id_usuario = ?";
 $stmt = $conn->prepare($sql);
@@ -110,8 +119,10 @@ button:hover {
 
 <form method="post">
     <label><strong>Novo valor:</strong></label>
-    <input type="number" step="0.01" name="valor" required>
+    <input type="number" step="0.01" name="valor" value="<?php echo $valor_atual; ?>" required>
     <button type="submit">Salvar</button>
 </form>
 </body>
 </html>
+
+
