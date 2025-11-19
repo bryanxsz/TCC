@@ -17,18 +17,6 @@ CREATE TABLE usuario (
     telefone VARCHAR(20) NULL DEFAULT 'Não definido'
 );
 
-CREATE TABLE aulas (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  modulo VARCHAR(100) NOT NULL,
-  numero_aula INT NOT NULL,
-  nome_aula VARCHAR(255) DEFAULT '',
-  titulo VARCHAR(255) DEFAULT '',
-  link_video TEXT DEFAULT '',
-  professor_nome VARCHAR(100) DEFAULT '',
-  professor_email VARCHAR(100) DEFAULT '',
-  professor_telefone VARCHAR(20) DEFAULT ''
-);
-
 CREATE TABLE IF NOT EXISTS aulas_progresso (
   id INT AUTO_INCREMENT PRIMARY KEY,
   usuario_id INT NOT NULL,
@@ -38,6 +26,20 @@ CREATE TABLE IF NOT EXISTS aulas_progresso (
   UNIQUE KEY ux_usuario_aula (usuario_id, aula_id),
   INDEX idx_aula_id (aula_id)
 );
+
+CREATE TABLE depoimentos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cargo VARCHAR(150) NOT NULL,
+    texto TEXT NOT NULL,
+    estrelas INT DEFAULT 5,
+    ativo INT DEFAULT 0
+);
+
+
+INSERT INTO `pj_spike`.`usuario` (`id_usuario`, `nome`, `email`, `senha`, `tipo`) VALUES ('1', 'ADMIN', 'admin@gmail.com', '12', '3');
+INSERT INTO `pj_spike`.`sistema_de_pagamento` (`id_sistema`, `valor`) VALUES ('1', '99');
+
 
 CREATE TABLE pagamento (
     id_pagamento INT,
