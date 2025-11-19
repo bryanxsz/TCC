@@ -35,14 +35,43 @@ $now = date('Y-m-d H:i:s');
 if ($res->num_rows > 0) {
     $row = $res->fetch_assoc();
     $current = (int)$row['visto'];
+
     if ($set === null) {
         // toggle
         $novo = $current ? 0 : 1;
     } else {
         $novo = $set ? 1 : 0;
     }
-    $upd = $conn->prepare("UPDATE aulas_progresso SET visto = ?, data_visto = ? WHERE id = ?");
-    $upd->bind_param("isi", $novo, $novo ? $now : null, $row['id']);
+
+    if ($novo === 1) {
+        // MARCOU → atualizar
+        $upd = $conn->prepare("
+            UPDATE aulas_progresso 
+            SET visto = 1, data_visto = ? 
+            WHERE id = ?
+        ");
+        $upd->bind_param("si", $now, $row['id']);
+        $upd->execute();
+
+        echo json_encode(['success' => true, 'visto' => 1]);
+        exit;
+
+    } else {
+        // DESMARCOU → deletar
+        $del = $conn->prepare("
+            DELETE FROM aulas_progresso 
+            WHERE id = ?
+        ");
+        $del->bind_param("i", $row['id']);
+        $del->execute();
+
+        echo json_encode(['success' => true, 'visto' => 0]);
+        exit;
+    }
+
+
+
+    
     $upd->execute();
     echo json_encode(['success' => true, 'visto' => $novo]);
     exit;
