@@ -70,8 +70,6 @@ if ($res->num_rows > 0) {
     }
 
 
-
-    
     $upd->execute();
     echo json_encode(['success' => true, 'visto' => $novo]);
     exit;
