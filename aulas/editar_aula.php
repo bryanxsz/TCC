@@ -127,7 +127,7 @@ body {
 /* FORM */
 .form-container {
   background: white;
-  margin-top: 200px;
+  margin-top: 100px;
   padding: 30px 50px;
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);

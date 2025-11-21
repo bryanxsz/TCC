@@ -223,9 +223,11 @@ async function toggleVistoServer(aulaId, setTo = null) {
     try {
         const body = new FormData();
         body.append('aula_id', aulaId);
+        body.append('modulo', '<?php echo $modulo; ?>'); // 🔥 AQUI, ÚNICA COISA QUE FALTAVA
         if (setTo !== null) body.append('set', setTo ? '1' : '0');
 
         const res = await fetch('toggle_visto.php', { method: 'POST', body: body });
+
         const j = await res.json();
         if (j.success) {
             progresso[aulaId] = !!j.visto;
@@ -327,7 +329,9 @@ document.querySelectorAll('.aula').forEach(aula => {
 
         atualizarStatus();
     });
-
+ // codigo deu certoo
+ //codigo deu certo
+ 
     const statusSpan = aula.querySelector('.status');
     statusSpan.addEventListener('click', e => {
         e.stopPropagation();
@@ -337,7 +341,7 @@ document.querySelectorAll('.aula').forEach(aula => {
                 if (ok) {
                     atualizarStatus();
                 } else {
-                    alert('Erro ao atualizar visto no servidor.');
+                    window.location.reload();
                 }
             });
         } else {
@@ -355,10 +359,10 @@ checkVisto.addEventListener('change', () => {
     const id = ativa.dataset.id;
     const setTo = checkVisto.checked;
     if (useServer) {
-        // send explicit set
         (async () => {
             const body = new FormData();
             body.append('aula_id', id);
+            body.append('modulo', '<?php echo $modulo; ?>'); // 🔥 AQUI — mesma linha do botão!
             body.append('set', setTo ? '1' : '0');
             try {
                 const res = await fetch('toggle_visto.php', { method: 'POST', body: body });
@@ -371,7 +375,7 @@ checkVisto.addEventListener('change', () => {
                 }
             } catch (err) {
                 console.error(err);
-                alert('Erro de rede ao marcar visto.');
+                window.location.reload();
             }
         })();
     } else {

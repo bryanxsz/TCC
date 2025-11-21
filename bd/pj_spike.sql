@@ -34,11 +34,13 @@ CREATE TABLE IF NOT EXISTS aulas_progresso (
   id INT AUTO_INCREMENT PRIMARY KEY,
   usuario_id INT NOT NULL,
   aula_id INT NOT NULL,
+  modulo VARCHAR(255) NOT NULL,   
   visto TINYINT(1) NOT NULL DEFAULT 0,
   data_visto DATETIME DEFAULT NULL,
   UNIQUE KEY ux_usuario_aula (usuario_id, aula_id),
   INDEX idx_aula_id (aula_id)
 );
+
 
 CREATE TABLE depoimentos (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -49,8 +51,12 @@ CREATE TABLE depoimentos (
     ativo INT DEFAULT 0
 );
 
+select * from depoimentos;
+select * from aulas_progresso;
+
+drop table aulas_progresso ;
+
 
 INSERT INTO `pj_spike`.`usuario` (`id_usuario`, `nome`, `email`, `senha`, `tipo`) VALUES ('1', 'ADMIN', 'admin@gmail.com', '12', '3');
 INSERT INTO `pj_spike`.`sistema_de_pagamento` (`id_sistema`, `valor`) VALUES ('1', '99');
-
-
+INSERT INTO `pj_spike`.`depoimentos` (`id`, `nome`, `cargo`, `texto`, `estrelas`, `ativo`) VALUES ('1', 'Anderson', 'Professor', 'Adoro trabalhar no Projeto spike!', '5', '1');
