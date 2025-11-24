@@ -8,13 +8,71 @@
   <link rel="icon" href="./imagens/logospike.png" type="image/x-icon">
 </head>
 <body>
-  <?php
+   <?php
 session_start();
 if (!isset($_SESSION['user_name'])) {
     header("Location: login.html");
     
     exit();
 }
+
+include "conexao.php";
+
+// --- calcular progresso por módulo (usar somente o que precisa) ---
+$usuario_id = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : null;
+
+// lista de módulos que aparecem na sua página (chaves = slug usado no DB/modulo, valores = título exibido)
+$modules = [
+    'recepcão'   => 'Recepção',
+    'toque'      => 'Toque',
+    'saque'      => 'Saque',
+    'ataque'     => 'Ataque',
+    'bloqueio'   => 'Bloqueio',
+    'levantador' => 'Levantador',
+    'oposto'     => 'Oposto',
+    'ponteiro'   => 'Ponteiro',
+    'central'    => 'Central',
+    'libero'     => 'Líbero'
+];
+
+$moduleProgress = []; // percent por módulo
+
+// preparar statements reutilizáveis
+// 1) contar total de aulas por módulo
+$stmtTotal = $conn->prepare("SELECT COUNT(*) as total FROM aulas WHERE modulo = ?");
+// 2) contar aulas vistas pelo usuário naquele módulo (apenas visto=1, distinct por aula_id)
+$stmtVistas = null;
+if ($usuario_id !== null) {
+    $stmtVistas = $conn->prepare("SELECT COUNT(DISTINCT aula_id) as vistas FROM aulas_progresso WHERE usuario_id = ? AND modulo = ? AND visto = 1");
+}
+
+foreach ($modules as $slug => $title) {
+    // total
+    $total = 0;
+    $vistas = 0;
+
+    $stmtTotal->bind_param("s", $slug);
+    $stmtTotal->execute();
+    $resT = $stmtTotal->get_result();
+    if ($row = $resT->fetch_assoc()) $total = (int)$row['total'];
+
+    // vistas (só se usuário logado)
+    if ($usuario_id !== null && $stmtVistas) {
+        $stmtVistas->bind_param("is", $usuario_id, $slug);
+        $stmtVistas->execute();
+        $resV = $stmtVistas->get_result();
+        if ($row = $resV->fetch_assoc()) $vistas = (int)$row['vistas'];
+    }
+
+    $percent = 0;
+    if ($total > 0) $percent = (int)round(($vistas / $total) * 100);
+
+    $moduleProgress[$slug] = $percent;
+}
+
+// liberar
+$stmtTotal->close();
+if ($stmtVistas) $stmtVistas->close();
 
 ?>
 
@@ -41,50 +99,77 @@ if (!isset($_SESSION['user_name'])) {
     <section class="fundamentos">
       <h2>Fundamentos</h2>
       <div class="grid">
-        <div class="card">
-          <img src="./imagens/manchete.png" class="thumb" alt="Manchete">
-          <div class="info">
-            <h3>Manchete</h3>
-            <div class="barra"><div style="width:60%"></div></div>
-            <a href="./aulas/recepcao.php" class="btn">Acessar</a>
-          </div>
-        </div>
 
-        <div class="card">
-          <img src="./imagens/toque.png" class="thumb" alt="Toque">
-          <div class="info">
-            <h3>Toque</h3>
-            <div class="barra"><div style="width:45%"></div></div>
-            <a href="./aulas/toque.php" class="btn">Acessar</a>
-          </div>
+<div class="card">
+    <img src="./imagens/manchete.png" class="thumb" alt="Manchete">
+    <div class="info">
+        <h3>Manchete</h3>
+        <div class="progress-line">
+            <div class="barra">
+                <div style="width: <?php echo ($moduleProgress['recepcão'] ?? 0); ?>%"></div>
+            </div>
+            <span><?php echo ($moduleProgress['recepcão'] ?? 0); ?>%</span>
         </div>
+        <a href="./aulas/recepcao.php" class="btn">Acessar</a>
+    </div>
+</div>
 
-        <div class="card">
-          <img src="./imagens/saque.png" class="thumb" alt="Saque">
-          <div class="info">
-            <h3>Saque</h3>
-            <div class="barra"><div style="width:75%"></div></div>
-            <a href="./aulas/saque.php" class="btn">Acessar</a>
-          </div>
+<div class="card">
+    <img src="./imagens/toque.png" class="thumb" alt="Toque">
+    <div class="info">
+        <h3>Toque</h3>
+        <div class="progress-line">
+            <div class="barra">
+                <div style="width: <?php echo ($moduleProgress['toque'] ?? 0); ?>%"></div>
+            </div>
+            <span><?php echo ($moduleProgress['toque'] ?? 0); ?>%</span>
         </div>
+        <a href="./aulas/toque.php" class="btn">Acessar</a>
+    </div>
+</div>
 
-        <div class="card">
-          <img src="./imagens/ataque.png" class="thumb" alt="Ataque">
-          <div class="info">
-            <h3>Ataque</h3>
-            <div class="barra"><div style="width:30%"></div></div>
-            <a href="./aulas/ataque.php" class="btn">Acessar</a>
-          </div>
+<div class="card">
+    <img src="./imagens/saque.png" class="thumb" alt="Saque">
+    <div class="info">
+        <h3>Saque</h3>
+        <div class="progress-line">
+            <div class="barra">
+                <div style="width: <?php echo ($moduleProgress['saque'] ?? 0); ?>%"></div>
+            </div>
+            <span><?php echo ($moduleProgress['saque'] ?? 0); ?>%</span>
         </div>
+        <a href="./aulas/saque.php" class="btn">Acessar</a>
+    </div>
+</div>
 
-        <div class="card">
-          <img src="./imagens/bloqueio.png"  class="thumb" alt="Bloqueio">
-          <div class="info">
-            <h3>Bloqueio</h3>
-            <div class="barra"><div style="width:50%"></div></div>
-            <a href="./aulas/bloqueio.php" class="btn">Acessar</a>
-          </div>
+<div class="card">
+    <img src="./imagens/ataque.png" class="thumb" alt="Ataque">
+    <div class="info">
+        <h3>Ataque</h3>
+        <div class="progress-line">
+            <div class="barra">
+                <div style="width: <?php echo ($moduleProgress['ataque'] ?? 0); ?>%"></div>
+            </div>
+            <span><?php echo ($moduleProgress['ataque'] ?? 0); ?>%</span>
         </div>
+        <a href="./aulas/ataque.php" class="btn">Acessar</a>
+    </div>
+</div>
+
+<div class="card">
+    <img src="./imagens/bloqueio.png" class="thumb" alt="Bloqueio">
+    <div class="info">
+        <h3>Bloqueio</h3>
+        <div class="progress-line">
+            <div class="barra">
+                <div style="width: <?php echo ($moduleProgress['bloqueio'] ?? 0); ?>%"></div>
+            </div>
+            <span><?php echo ($moduleProgress['bloqueio'] ?? 0); ?>%</span>
+        </div>
+        <a href="./aulas/bloqueio.php" class="btn">Acessar</a>
+    </div>
+</div>
+
 
     </section>
 
@@ -92,50 +177,92 @@ if (!isset($_SESSION['user_name'])) {
     <section class="posicoes">
       <h2>Posições</h2>
       <div class="grid">
-        <div class="card">
-          <img src="levantador.png" class="thumb" alt="Levantador">
-          <div class="info">
-            <h3>Levantador</h3>
-            <div class="barra"><div style="width:80%"></div></div>
-            <a href="./aulas/levantador.php" class="btn">Acessar</a>
-          </div>
+
+<div class="card">
+    <img src="levantador.png" class="thumb" alt="Levantador">
+    <div class="info">
+        <h3>Levantador</h3>
+        <div class="progress-line">
+            <div class="barra">
+                <div style="width: <?php echo ($moduleProgress['levantador'] ?? 0); ?>%"></div>
+            </div>
+            <span><?php echo ($moduleProgress['levantador'] ?? 0); ?>%</span>
+        </div>
+        <a href="./aulas/levantador.php" class="btn">Acessar</a>
+    </div>
+</div>
+
+<div class="card">
+    <img src="oposto.png" class="thumb" alt="Oposto">
+
+    <div class="info">
+        <h3>Oposto</h3>
+
+        <div class="progress-line">
+            <div class="barra">
+                <div style="width: <?php echo ($moduleProgress['oposto'] ?? 0); ?>%"></div>
+            </div>
+            <span><?php echo ($moduleProgress['oposto'] ?? 0); ?>%</span>
         </div>
 
-        <div class="card">
-          <img src="oposto.png" class="thumb" alt="Oposto">
-          <div class="info">
-            <h3>Oposto</h3>
-            <div class="barra"><div style="width:55%"></div></div>
-            <a href="./aulas/oposto.php" class="btn">Acessar</a>
-          </div>
+        <a href="./aulas/oposto.php" class="btn">Acessar</a>
+    </div>
+</div>
+
+<div class="card">
+    <img src="ponteiro.png" class="thumb" alt="Ponteiro">
+
+    <div class="info">
+        <h3>Ponteiro</h3>
+
+        <div class="progress-line">
+            <div class="barra">
+                <div style="width: <?php echo ($moduleProgress['ponteiro'] ?? 0); ?>%"></div>
+            </div>
+            <span><?php echo ($moduleProgress['ponteiro'] ?? 0); ?>%</span>
         </div>
 
-        <div class="card">
-          <img src="ponteiro.png" class="thumb" alt="Ponteiro">
-          <div class="info">
-            <h3>Ponteiro</h3>
-            <div class="barra"><div style="width:65%"></div></div>
-            <a href="./aulas/ponteiro.php" class="btn">Acessar</a>
-          </div>
+        <a href="./aulas/ponteiro.php" class="btn">Acessar</a>
+    </div>
+</div>
+
+<div class="card">
+    <img src="central.png" class="thumb" alt="Central">
+
+    <div class="info">
+        <h3>Central</h3>
+
+        <div class="progress-line">
+            <div class="barra">
+                <div style="width: <?php echo ($moduleProgress['central'] ?? 0); ?>%"></div>
+            </div>
+            <span><?php echo ($moduleProgress['central'] ?? 0); ?>%</span>
         </div>
 
-        <div class="card">
-          <img src="central.png" class="thumb" alt="Central">
-          <div class="info">
-            <h3>Central</h3>
-            <div class="barra"><div style="width:45%"></div></div>
-            <a href="./aulas/central.php" class="btn">Acessar</a>
-          </div>
+        <a href="./aulas/central.php" class="btn">Acessar</a>
+    </div>
+</div>
+
+
+<div class="card">
+    <img src="libero.png" class="thumb" alt="Líbero">
+
+    <div class="info">
+        <h3>Líbero</h3>
+
+        <div class="progress-line">
+            <div class="barra">
+                <div style="width: <?php echo ($moduleProgress['libero'] ?? 0); ?>%"></div>
+            </div>
+            <span><?php echo ($moduleProgress['libero'] ?? 0); ?>%</span>
         </div>
 
-        <div class="card">
-          <img src="libero.png" class="thumb" alt="Líbero">
-          <div class="info">
-            <h3>Líbero</h3>
-            <div class="barra"><div style="width:70%"></div></div>
-            <a href="./aulas/libero.php" class="btn">Acessar</a>
-          </div>
-        </div>
+        <a href="./aulas/libero.php" class="btn">Acessar</a>
+    </div>
+</div>
+
+
+
       </div>
     </section>
   </main>

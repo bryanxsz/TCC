@@ -145,8 +145,9 @@
 
 <section class="depo" id="depoimentos">
   <h2 style="color: white; font-size: 32px; margin-bottom: 40px; font-weight: bold; text-align: center;">
-    DEPOIMENTOS
+    DEPOIMENTOS (<a href="depoimentos.php">deixe o seu aqui!</a>)
   </h2>
+
 
   <div class="carrossel">
 
@@ -224,87 +225,128 @@ mysqli_close($conn);
   </footer>
 
 <script>
-let depoimentoAtual = 1; // começa no ID 1
+/*
+  Script melhorado para navegar pelos depoimentos ativos.
+  Coloque este script no final do documento (antes de </body>).
+*/
+
+let depoimentoAtual = 1; // id inicial
+const MAX_TENTATIVAS = 10; // proteção contra loop infinito
 
 document.addEventListener("DOMContentLoaded", () => {
-    carregarDepoimento(depoimentoAtual); // funciona com a nova assinatura (direcao opcional)
+  // carrega inicial
+  carregarDepoimento(depoimentoAtual);
+
+  // exemplo: ligando botões sem usar onclick inline (caso tenha botões com esses IDs)
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+  if (btnPrev) btnPrev.addEventListener('click', () => mudarDepoimento(-1));
+  if (btnNext) btnNext.addEventListener('click', () => mudarDepoimento(1));
+
+  // tornar a função acessível globalmente caso ainda use onclick inline
+  window.mudarDepoimento = mudarDepoimento;
 });
 
-function carregarDepoimento(id, direcao = 1, tentativas = 0) {
-    console.log("Carregando ID:", id);
+async function fetchJson(url) {
+  try {
+    const resp = await fetch(url, { cache: "no-store" });
+    const text = await resp.text();
 
-    fetch(`get_depoimento.php?id=${id}`)
-        .then(response => response.json())
-        .then(data => {
-            console.log("JSON recebido:", data);
+    // detectar HTML acidental (página de erro ou redirect)
+    if (text.trim().startsWith('<')) {
+      console.error("Resposta não é JSON (HTML recebido):", text.slice(0,200));
+      return null;
+    }
 
-            // Se vier vazio (ID não existe)
-            if (!data || !data.id) {
-                console.warn("Depoimento não encontrado para ID:", id);
-                // reverte o depoimentoAtual para último válido (não avança para vazio)
-                depoimentoAtual -= direcao;
-                return;
-            }
+    return JSON.parse(text);
+  } catch (err) {
+    console.error("Erro ao buscar/parsear JSON:", err);
+    return null;
+  }
+}
 
-            // Se existir campo 'ativo' e não estiver ativo, pula para o próximo na mesma direção
-            // aceita '1' (string) ou 1 (number)
-            const ativo = Number(data.ativo);
-            if (ativo !== 1) {
-                console.warn(`Depoimento ID ${id} não está ativo (ativo=${data.ativo}). Pulando...`);
-                // proteção contra loop infinito: limite de tentativas
-                if (tentativas >= 100) { // 100 é arbitrário e seguro
-                    console.error("Número máximo de tentativas atingido. Parando busca por depoimentos ativos.");
-                    // reverte para último válido
-                    depoimentoAtual -= direcao;
-                    return;
-                }
+/**
+ * Tenta carregar o depoimento apontado por `id`.
+ * Se o depo estiver inativo ou não existir, tenta avançar na mesma direção até achar ativo
+ * ou até atingir MAX_TENTATIVAS.
+ *
+ * @param {number} id - id inicial a tentar
+ * @param {number} direcao - 1 para frente, -1 para trás
+ * @param {number} tentativas - contador recursivo
+ */
+async function carregarDepoimento(id, direcao = 1, tentativas = 0) {
+  console.log("Tentativa carregar ID:", id, "direcao:", direcao, "tentativas:", tentativas);
 
-                // avança o ponteiro e tenta carregar o próximo
-                depoimentoAtual += direcao;
-                // Se o novo id ficou < 1, mantem 1 e para
-                if (depoimentoAtual < 1) {
-                    depoimentoAtual = 1;
-                    console.warn("Chegou ao início da lista, não há depoimentos ativos anteriores.");
-                    return;
-                }
+  if (tentativas >= MAX_TENTATIVAS) {
+    console.warn("Máximo de tentativas atingido. Nenhum depoimento ativo encontrado nesse sentido.");
+    return;
+  }
 
-                // chamada recursiva para tentar o próximo ID (tentativas +1)
-                carregarDepoimento(depoimentoAtual, direcao, tentativas + 1);
-                return;
-            }
+  const data = await fetchJson(`get_depoimento.php?id=${encodeURIComponent(id)}`);
 
-            // Se está ativo, atualiza HTML
-            document.getElementById("nome").textContent = data.nome;
-            document.getElementById("cargo").textContent = data.cargo;
-            document.getElementById("texto").textContent = data.texto;
-            document.getElementById("foto").src = "imagens/images.png";
+  if (!data) {
+    // não veio JSON válido — tentar próximo (avançar ou retroceder)
+    console.warn("Nenhum JSON válido para ID", id, " tentando próximo.");
+    depoimentoAtual = id + direcao;
+    // evita IDs < 1
+    if (depoimentoAtual < 1) depoimentoAtual = 1;
+    await carregarDepoimento(depoimentoAtual, direcao, tentativas + 1);
+    return;
+  }
 
-            // Estrelas
-            document.getElementById("estrelas").textContent = "⭐".repeat(data.estrelas);
+  // se o registro não existe (fetch retorna null/array vazio) verifique se há id no objeto
+  if (!data.id) {
+    console.warn("Nenhum depoimento com ID", id, " tentando próximo.");
+    depoimentoAtual = id + direcao;
+    if (depoimentoAtual < 1) depoimentoAtual = 1;
+    await carregarDepoimento(depoimentoAtual, direcao, tentativas + 1);
+    return;
+  }
 
-            // tudo ok — depoimentoAtual já está no id correto (mantém consistência)
-        })
-        .catch(err => {
-            console.error("Erro ao carregar depoimento:", err);
-            // reverte caso a requisição lance erro e a ação tenha sido um avanço
-            // (não sabemos a direção aqui; melhor não mexer no depoimentoAtual)
-        });
+  // se campo ativo existe e não é 1, pula
+  const ativo = Number(data.ativo);
+  if (ativo !== 1) {
+    console.log(`Depoimento ${id} não ativo (ativo=${data.ativo}). Pulando...`);
+    depoimentoAtual = id + direcao;
+    if (depoimentoAtual < 1) {
+      depoimentoAtual = 1;
+      console.warn("Chegou ao início da lista, não há depoimentos ativos anteriores.");
+      return;
+    }
+    await carregarDepoimento(depoimentoAtual, direcao, tentativas + 1);
+    return;
+  }
+
+  // Se chegou aqui, temos um depoimento ativo — atualiza o HTML
+  depoimentoAtual = Number(data.id); // garante que o ponteiro aponte pro id real
+  console.log("Mostrando depoimento ativo ID:", depoimentoAtual);
+
+  // Atualize os elementos do DOM conforme sua estrutura:
+  const elNome = document.getElementById("nome");
+  const elCargo = document.getElementById("cargo");
+  const elTexto = document.getElementById("texto");
+  const elFoto = document.getElementById("foto");
+  const elEstrelas = document.getElementById("estrelas");
+
+  if (elNome) elNome.textContent = data.nome ?? "Anônimo";
+  if (elCargo) elCargo.textContent = data.cargo ?? "";
+  if (elTexto) elTexto.textContent = data.texto ?? "";
+  if (elFoto) elFoto.src = data.foto ?? "imagens/images.png";
+  if (elEstrelas) {
+    const n = Math.max(0, Math.min(5, Number(data.estrelas) || 0));
+    elEstrelas.textContent = "⭐".repeat(n);
+  }
 }
 
 function mudarDepoimento(direcao) {
-    depoimentoAtual += direcao;
-
-    if (depoimentoAtual < 1) {
-        depoimentoAtual = 1;
-    }
-
-    // passa a direção para a função, assim ela sabe pular apenas para frente ou para trás
-    carregarDepoimento(depoimentoAtual, direcao);
+  // garante que seja número inteiro
+  direcao = Number(direcao) >= 0 ? 1 : -1;
+  depoimentoAtual += direcao;
+  if (depoimentoAtual < 1) depoimentoAtual = 1;
+  carregarDepoimento(depoimentoAtual, direcao);
 }
-
-
-
 </script>
+
 
 
 

@@ -156,3 +156,25 @@ h2 {
 .btn:hover {
   background-color: brown;
 }
+
+.progress-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  height: 100%;
+}
+
+.progress-line span {
+  font-size: 14px;
+  font-weight: bold;
+  color: #222;
+  min-width: 40px;
+}
+
+.progress-line .barra {
+  flex: 1;
+  margin-bottom: 0;
+  height: 10px;
+  width: 100px;
+}

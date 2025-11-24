@@ -121,8 +121,8 @@ button:hover {
     border-bottom: 1px solid black;
     z-index: 10;
     padding: 20px;
-    padding-bottom: 10px
-    height: 100px;
+    padding-bottom: 10px;
+    height: 80px;
 }
 
 .logo { 

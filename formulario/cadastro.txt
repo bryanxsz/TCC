@@ -49,3 +49,10 @@ Nome: Victor | Email: victor@gmail.com | Senha: 123 | Tipo: 2
 Nome: Laluce | Email: laluce@gmail.com | Senha: 123 | Tipo: 2
 Nome: Binel | Email: binel@gmail.com | Senha: 1212 | Tipo: 1
 Nome: Anderson | Email: anderson@gmail.com | Senha: 12 | Tipo: 2
+Nome: Lucas | Email: lucas@gmail.com | Senha: 12 | Tipo: 1
+Nome: Bryan  | Email: bryan.matias@gmail.com | Senha: 12 | Tipo: 1
+Nome: João Gabriel | Email: joão@gmail.com | Senha: 12 | Tipo: 1
+Nome: Carlos | Email: carlos@gmail.com | Senha: 12 | Tipo: 1
+Nome: Vini | Email: vinicius@gmail.com | Senha: 12 | Tipo: 1
+Nome: Bryan  | Email: bryan.matiass@gmail.com | Senha: 12 | Tipo: 1
+Nome: Bryan  | Email: bryan.matiasss@gmail.com | Senha: 12 | Tipo: 1

@@ -73,6 +73,20 @@ body {
   box-sizing: border-box;
 }
 
+/* Logo */
+
+.logo {
+  height: 60px;
+  width: 60px;
+  background-color: black; 
+  padding: 1px; 
+  margin-bottom: -10px; 
+  border-radius: 10%;
+  transform: scale(1.4); /* aumenta sem mexer no nav */
+  transform-origin: center; /* garante que cresça pro centro */
+  margin-left: 20px;
+}
+
 /* Garantir que os itens não se mexam */
 .topo > div,
 .logo,
@@ -80,18 +94,6 @@ body {
   flex-shrink: 0;
 }
 
-/* Logo */
-.logo {
-  height: 60px;
-  width: 60px;
-  background-color: black;
-  padding: 1px; 
-  margin: 0px;
-  border-radius: 10%;
-  transform: scale(1.4); /* aumenta sem mexer no nav */
-  transform-origin: center; /* garante que cresça pro centro */
-  margin-left: 20px;
-}
 
 /* Título central fixo */
 .topo h1 {
@@ -108,13 +110,11 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-
   border: 1px solid black;
   padding: 5px 10px;
   border-radius: 8px;
   background: white;
   cursor: pointer;
-
   white-space: nowrap; /* impede quebra */
 }
 
@@ -194,9 +194,9 @@ href="../aulas/<?php echo $moduloSemAcento; ?>.php">
     <div style="cursor: pointer" onclick="window.location.href='../editar_conta.php'" class="perfil">
         <img src="../imagens/images.png" class="foto" alt="Foto do usuário">
         <div>
-            <strong>
+            
                 Olá, <?php echo ($_SESSION['user_tipo'] == '1' ? "Aluno " : "Professor ") . ucwords(htmlspecialchars($_SESSION['user_name'])); ?>!
-            </strong><br>
+            <br>
             <small><?php echo htmlspecialchars($_SESSION['user_email']); ?></small><br>
             <small><a href="../logout.php">Sair</a></small>
         </div>

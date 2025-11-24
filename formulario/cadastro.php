@@ -28,29 +28,16 @@ if (mysqli_num_rows($result) > 0) {
     $sql = "INSERT INTO usuario (nome, email, senha, tipo) VALUES ('$nome', '$email', '$senha', '$tipo')";
     
     if (mysqli_query($conn, $sql)) {
-        echo "<h1>Novo registro criado com sucesso</h1>";
 
-        if ($nome && $email && $senha && $tipo)
-        {
-            $linha="Nome: $nome | Email: $email | Senha: $senha | Tipo: $tipo\n";
-            file_put_contents("cadastro.txt",$linha,FILE_APPEND);
-        
-            echo "Nome: $nome <br>";
-            echo "Email: $email <br>";
-            echo "Senha: $senha <br>";
-            echo "Tipo: $tipo <br>";
-            header ('Location: ../index.php');
-        }else
+        echo "<script>
+            alert('Cadastro realizado com Sucesso! Clique em OK para fazer login.');
+            window.location.replace('../login.html');
+          </script>";
+    exit;
 
-        {
-            echo "Todos os Campos São Obrigatórios";
-        }
-
-    } else {
-        echo "Erro ao cadastrar: " . mysqli_error($conn);
-    }
+     
 }
-
+}
 
 
 ?>    

@@ -51,7 +51,10 @@ CREATE TABLE depoimentos (
     ativo INT DEFAULT 0
 );
 
+
 select * from depoimentos;
+select * from aulas;
+select * from usuario;
 select * from aulas_progresso;
 
 drop table aulas_progresso ;
