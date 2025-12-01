@@ -125,6 +125,24 @@ if (!$row || $row['ativo'] == 1 || $row['tipo'] == 2) {
 
 ?>
 
+<?php
+
+include 'conexao.php';
+
+$id = 1; 
+
+$sql = "SELECT valor FROM sistema_de_pagamento WHERE id_sistema = $id";
+$result = mysqli_query($conn, $sql);
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $valor = $row['valor'];
+} else {
+    echo "Nenhum resultado encontrado.";
+}
+
+mysqli_close($conn);
+?>
 
 
   <div class="wrap">
@@ -151,7 +169,9 @@ if (!$row || $row['ativo'] == 1 || $row['tipo'] == 2) {
 
     <!-- Formulário -->
     <form class="form" method="POST" action="processa-pagamento.php">
-  <h2>Dados do cartão (demo)</h2>
+  <h2>Dados do cartão</h2>
+
+  <p class="preco-avista"><strong style="font-size:20px">R$<?= $valor ?></strong> à vista</p>
 
   <label for="number">Número do cartão</label>
   <input id="number" name="number" type="text" placeholder="1234 5678 9012 3456" maxlength="16">
