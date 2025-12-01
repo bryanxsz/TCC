@@ -68,14 +68,16 @@ if ($row && $row['senha'] == $senha) {
             header('Location: form-cartao.php');
             exit;
         } else {
-            echo "Usuário ou senha inválida!";
+            echo "<script>alert('Usuário ou senha inválida!'); window.location.href='login.html'</script>";
+            exit;
         }
     } else {
         echo "Erro: atributo 'ativo' não encontrado.";
     }
 
 } else {
-    echo "Usuário ou senha inválida!";
+    echo "<script>alert('Usuário ou senha inválida!'); window.location.href='login.html'</script>";
+    exit;
 } 
     // Verifica o campo 'ativo'
     

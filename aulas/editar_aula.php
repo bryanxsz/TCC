@@ -221,6 +221,17 @@ href="../aulas/<?php echo $moduloSemAcento; ?>.php">
 
     <button type="submit">Salvar</button>
   </form>
+
+  <br>
+
+  <div class="video-box">
+            <iframe id="videoFrame"
+                    src="https://www.youtube.com/embed/l7VsurR48Ew?si=l4JnwHaafeO2MpIT"
+                    title="Vídeo da Aula"
+                    frameborder="0"
+                    allowfullscreen>
+            </iframe>
+  </div>
 </div>
 
 </body>

@@ -57,7 +57,7 @@ select * from aulas;
 select * from usuario;
 select * from aulas_progresso;
 
-drop table aulas_progresso ;
+
 
 
 INSERT INTO `pj_spike`.`usuario` (`id_usuario`, `nome`, `email`, `senha`, `tipo`) VALUES ('1', 'ADMIN', 'admin@gmail.com', '12', '3');

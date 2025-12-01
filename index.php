@@ -116,6 +116,108 @@
   </div>
 </section>
 
+
+<section id="nossostreinadores" class="nossostreinadores">
+    <h2 style=" font-size: 32px; margin-bottom: 40px; font-weight: bold; text-align: center;">NOSSOS ATLETAS</h2>
+  <div class="treinador-conteudo">
+    <div class="treinador-texto">
+      <h3>ATLETA</h3>
+      <h2>LEONARDO</h2>
+      <div class="linha"></div>
+
+      <p>Graduado em Educação Física pela<br>Universidade FEEVALE</p>
+
+      <p>Técnico de voleibol chancelado Nível 2 pela CBV<br>
+      <em>(Confederação Brasileira de Vôlei)</em></p>
+
+      <p>Técnico da Sociedade Ginástica Novo Hamburgo<br>
+      <em>(Clube tricampeão da superliga)</em></p>
+
+      <p>Especialista em salto vertical e treinamento<br>desportivo</p>
+
+      <p>Treinador de voleibol há mais de 10 anos</p>
+    </div>
+
+    <div class="treinador-imagem">
+      <img src="./imagens/atleta-leo.jpg"  alt="Professor Cardoso em ação">
+    </div>
+  </div>
+
+  <div class="treinador-conteudo">
+    <div class="treinador-texto">
+      <h3>ATLETA</h3>
+      <h2>HENRIQUE</h2>
+      <div class="linha"></div>
+
+      <p>Graduado em Educação Física pela<br>Universidade FEEVALE</p>
+
+      <p>Técnico de voleibol chancelado Nível 2 pela CBV<br>
+      <em>(Confederação Brasileira de Vôlei)</em></p>
+
+      <p>Técnico da Sociedade Ginástica Novo Hamburgo<br>
+      <em>(Clube tricampeão da superliga)</em></p>
+
+      <p>Especialista em salto vertical e treinamento<br>desportivo</p>
+
+      <p>Treinador de voleibol há mais de 10 anos</p>
+    </div>
+
+    <div class="treinador-imagem">
+      <img src="./imagens/atleta-henrique.jpg" alt="Professor Cardoso em ação">
+    </div>
+  </div>
+
+  <div class="treinador-conteudo">
+    <div class="treinador-texto">
+      <h3>ATLETA</h3>
+      <h2>DIOGO</h2>
+      <div class="linha"></div>
+
+      <p>Graduado em Educação Física pela<br>Universidade FEEVALE</p>
+
+      <p>Técnico de voleibol chancelado Nível 2 pela CBV<br>
+      <em>(Confederação Brasileira de Vôlei)</em></p>
+
+      <p>Técnico da Sociedade Ginástica Novo Hamburgo<br>
+      <em>(Clube tricampeão da superliga)</em></p>
+
+      <p>Especialista em salto vertical e treinamento<br>desportivo</p>
+
+      <p>Treinador de voleibol há mais de 10 anos</p>
+    </div>
+
+    <div class="treinador-imagem">
+      <img src="./imagens/atleta-diogo.jpg" alt="Professor Cardoso em ação">
+    </div>
+  </div>
+  
+  <div class="treinador-conteudo">
+    <div class="treinador-texto">
+      <h3>ATLETA</h3>
+      <h2>MURILO</h2>
+      <div class="linha"></div>
+
+      <p>Graduado em Educação Física pela<br>Universidade FEEVALE</p>
+
+      <p>Técnico de voleibol chancelado Nível 2 pela CBV<br>
+      <em>(Confederação Brasileira de Vôlei)</em></p>
+
+      <p>Técnico da Sociedade Ginástica Novo Hamburgo<br>
+      <em>(Clube tricampeão da superliga)</em></p>
+
+      <p>Especialista em salto vertical e treinamento<br>desportivo</p>
+
+      <p>Treinador de voleibol há mais de 10 anos</p>
+    </div>
+
+    <div class="treinador-imagem">
+      <img src="./imagens/atleta-murilo.jpg" alt="Professor Cardoso em ação">
+    </div>
+  </div>
+  
+</section>
+
+
 <section id="nossostreinadores" class="nossostreinadores">
     <h2 style=" font-size: 32px; margin-bottom: 40px; font-weight: bold; text-align: center;">NOSSOS TREINADORES</h2>
   <div class="treinador-conteudo">
