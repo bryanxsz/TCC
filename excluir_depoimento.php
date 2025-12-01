@@ -15,11 +15,11 @@ $stmt->bind_param("i", $id);
 if ($stmt->execute()) {
     echo "<script>
             alert('Depoimento excluído com sucesso!');
-            window.location.href='painel_depoimentos.php';
+            window.location.href='painel.php';
           </script>";
 } else {
     echo "<script>
             alert('Erro ao excluir depoimento.');
-            window.location.href='painel_depoimentos.php';
+            window.location.href='painel.php';
           </script>";
 }

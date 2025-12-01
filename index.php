@@ -78,143 +78,103 @@
 </section>
 
 
-
-<section class="atletas-section" id="nossosatletas">
-  <h2>NOSSOS ATLETAS</h2>
-  <div class="atletas-grid">
-    <div class="atleta-card">
-      <img src="./imagens/jogador-bryan.jpg" alt="Bryan">
-      <div class="atleta-info">
-        <strong>Bryan</strong>
-        <p>Oposto</p>
-      </div>
-    </div>
-
-    <div class="atleta-card">
-      <img src="./imagens/jogador-brissi.jpg" alt="Honorato">
-      <div class="atleta-info">
-        <strong>Brissi</strong>
-        <p>Central</p>
-      </div>
-    </div>
-
-    <div class="atleta-card">
-      <img src="./imagens/jogador-boca.jpg" alt="Cachopa">
-      <div class="atleta-info">
-        <strong>Boca</strong>
-        <p>Libero</p>
-      </div>
-    </div>
-
-    <div class="atleta-card">
-      <img src="./imagens/jogador-laluce.jpg" alt="Lukas Bergmann">
-      <div class="atleta-info">
-        <strong>Laluce</strong>
-        <p>Levantador</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section id="nossostreinadores" class="nossostreinadores">
+<section id="nossosatletas" class="nossostreinadores">
     <h2 style=" font-size: 32px; margin-bottom: 40px; font-weight: bold; text-align: center;">NOSSOS ATLETAS</h2>
-  <div class="treinador-conteudo">
-    <div class="treinador-texto">
-      <h3>ATLETA</h3>
-      <h2>LEONARDO</h2>
-      <div class="linha"></div>
+    
+    <div class="treinador-conteudo">
+        <div class="treinador-texto">
+            <h3>ATLETA PROFISSIONAL</h3>
+            <h2>LEONARDO</h2>
+            <div class="linha"></div>
+            
+            <p><strong>Posição: Levantador (Setter) e Capitão</strong></p>
 
-      <p>Graduado em Educação Física pela<br>Universidade FEEVALE</p>
+            <p>Líder técnico e tático da equipe, com 12 anos de experiência<br>
+            <em>(Foco em organização de jogadas e tomada de decisão sob pressão)</em></p>
 
-      <p>Técnico de voleibol chancelado Nível 2 pela CBV<br>
-      <em>(Confederação Brasileira de Vôlei)</em></p>
+            <p>Peça-chave na conquista do tricampeonato da Superliga<br>
+            <em>(Sociedade Ginástica Novo Hamburgo)</em></p>
 
-      <p>Técnico da Sociedade Ginástica Novo Hamburgo<br>
-      <em>(Clube tricampeão da superliga)</em></p>
+            <p>Especialista em Salto Vertical e Potência de Ataque/Bloqueio</p>
+            
+          
+        </div>
 
-      <p>Especialista em salto vertical e treinamento<br>desportivo</p>
-
-      <p>Treinador de voleibol há mais de 10 anos</p>
+        <div class="treinador-imagem">
+            <img src="./imagens/atleta-leo.jpg" alt="Atleta Leonardo - Levantador">
+        </div>
     </div>
 
-    <div class="treinador-imagem">
-      <img src="./imagens/atleta-leo.jpg"  alt="Professor Cardoso em ação">
-    </div>
-  </div>
+    <div class="treinador-conteudo">
+        <div class="treinador-texto">
+            <h3>ATLETA PROFISSIONAL</h3>
+            <h2>HENRIQUE</h2>
+            <div class="linha"></div>
 
-  <div class="treinador-conteudo">
-    <div class="treinador-texto">
-      <h3>ATLETA</h3>
-      <h2>HENRIQUE</h2>
-      <div class="linha"></div>
+            <p><strong>Posição: Ponteiro (Outside Hitter)</strong></p>
 
-      <p>Graduado em Educação Física pela<br>Universidade FEEVALE</p>
+            <p>Principal força ofensiva, com mais de 10 anos de carreira<br>
+            <em>(Alto índice de acerto em ataques de extremidade e fundo)</em></p>
 
-      <p>Técnico de voleibol chancelado Nível 2 pela CBV<br>
-      <em>(Confederação Brasileira de Vôlei)</em></p>
+            <p>Tricampeão da Superliga pelo clube Sociedade Ginástica Novo Hamburgo<br>
+            <em>(Contribuição decisiva em momentos críticos de jogo)</em></p>
 
-      <p>Técnico da Sociedade Ginástica Novo Hamburgo<br>
-      <em>(Clube tricampeão da superliga)</em></p>
+            <p>Técnico Nível 2 CBV e Especialista em Treinamento Desportivo<br>
+            <em>(Aplica conhecimento acadêmico no próprio alto rendimento)</em></p>
 
-      <p>Especialista em salto vertical e treinamento<br>desportivo</p>
+          
+        </div>
 
-      <p>Treinador de voleibol há mais de 10 anos</p>
-    </div>
-
-    <div class="treinador-imagem">
-      <img src="./imagens/atleta-henrique.jpg" alt="Professor Cardoso em ação">
-    </div>
-  </div>
-
-  <div class="treinador-conteudo">
-    <div class="treinador-texto">
-      <h3>ATLETA</h3>
-      <h2>DIOGO</h2>
-      <div class="linha"></div>
-
-      <p>Graduado em Educação Física pela<br>Universidade FEEVALE</p>
-
-      <p>Técnico de voleibol chancelado Nível 2 pela CBV<br>
-      <em>(Confederação Brasileira de Vôlei)</em></p>
-
-      <p>Técnico da Sociedade Ginástica Novo Hamburgo<br>
-      <em>(Clube tricampeão da superliga)</em></p>
-
-      <p>Especialista em salto vertical e treinamento<br>desportivo</p>
-
-      <p>Treinador de voleibol há mais de 10 anos</p>
+        <div class="treinador-imagem">
+            <img src="./imagens/atleta-henrique.jpg" alt="Atleta Henrique - Ponteiro">
+        </div>
     </div>
 
-    <div class="treinador-imagem">
-      <img src="./imagens/atleta-diogo.jpg" alt="Professor Cardoso em ação">
+    <div class="treinador-conteudo">
+        <div class="treinador-texto">
+            <h3>ATLETA PROFISSIONAL</h3>
+            <h2>DIOGO</h2>
+            <div class="linha"></div>
+
+            <p><strong>Posição: Central (Middle Blocker)</strong></p>
+
+            <p>Especialista em bloqueio e ataque de primeiro tempo, com 11 anos de experiência</p>
+
+            <p>Defesa eficiente de rede e rápido deslocamento lateral<br>
+            <em>(Fator de desequilíbrio contra ataques adversários)</em></p>
+
+            <p>Atleta do clube tricampeão da Superliga: Sociedade Ginástica Novo Hamburgo</p>
+
+   
+        </div>
+
+        <div class="treinador-imagem">
+            <img src="./imagens/atleta-diogo.jpg" alt="Atleta Diogo - Central">
+        </div>
     </div>
-  </div>
-  
-  <div class="treinador-conteudo">
-    <div class="treinador-texto">
-      <h3>ATLETA</h3>
-      <h2>MURILO</h2>
-      <div class="linha"></div>
 
-      <p>Graduado em Educação Física pela<br>Universidade FEEVALE</p>
+    <div class="treinador-conteudo">
+        <div class="treinador-texto">
+            <h3>ATLETA PROFISSIONAL</h3>
+            <h2>MURILO</h2>
+            <div class="linha"></div>
 
-      <p>Técnico de voleibol chancelado Nível 2 pela CBV<br>
-      <em>(Confederação Brasileira de Vôlei)</em></p>
+            <p><strong>Posição: Líbero (Libero)</strong></p>
 
-      <p>Técnico da Sociedade Ginástica Novo Hamburgo<br>
-      <em>(Clube tricampeão da superliga)</em></p>
+            <p>Referência em defesa e recepção de saque há mais de 10 anos<br>
+            <em>(Garantia da estabilidade do passe para a organização ofensiva)</em></p>
 
-      <p>Especialista em salto vertical e treinamento<br>desportivo</p>
+            <p>Atleta vencedor no clube tricampeão da Superliga (SGNH)</p>
 
-      <p>Treinador de voleibol há mais de 10 anos</p>
+            <p>Especialista em agilidade, velocidade e **Prevenção de Lesões**<br>
+            <em>(Manutenção da alta performance e longevidade na carreira)</em></p>
+        </div>
+
+        <div class="treinador-imagem">
+            <img src="./imagens/atleta-murilo.jpg" alt="Atleta Murilo - Líbero">
+        </div>
     </div>
-
-    <div class="treinador-imagem">
-      <img src="./imagens/atleta-murilo.jpg" alt="Professor Cardoso em ação">
-    </div>
-  </div>
-  
+    
 </section>
 
 

@@ -171,7 +171,7 @@ th, td {
 </style>
 
 <header class="topo">
-    <a href="">
+    <a href="index.php">
         <img src="./imagens/logospike.png" class="logo" alt="Logo">
     </a>
     <h1>PAINEL</h1>

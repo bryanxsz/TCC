@@ -220,11 +220,13 @@ href="../aulas/<?php echo $moduloSemAcento; ?>.php">
     <input type="text" name="link_video" value="<?php echo htmlspecialchars($aula['link_video']); ?>">
 
     <button type="submit">Salvar</button>
+
   </form>
 
   <br>
 
   <div class="video-box">
+    <h3>Como adicionar o link da Aula:</h3>
             <iframe id="videoFrame"
                     src="https://www.youtube.com/embed/l7VsurR48Ew?si=l4JnwHaafeO2MpIT"
                     title="Vídeo da Aula"

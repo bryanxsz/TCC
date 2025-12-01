@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sssi", $nome, $cargo, $texto, $estrelas);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Depoimento enviado com sucesso!'); window.history.back();</script>";
+        echo "<script>alert('Depoimento enviado com sucesso!'); window.location.href='index.php';</script>";
         exit;
     } else {
         echo "Erro ao enviar depoimento.";

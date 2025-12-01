@@ -185,7 +185,7 @@ if ($stmtCheck->num_rows > 0) {
 
 <!-- HEADER -->
 <header class="topo">
-    <a href="./modulos.php">
+    <a href="index.php">
         <img src="./imagens/logospike.png" class="logo" alt="Logo">
     </a>
 
