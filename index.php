@@ -49,7 +49,7 @@
     </div>
 
     <div class="carousel-slide">
-      <img src="./imagens/equipe-2.jpg" alt="Treinamento de salto">
+      <img src="./imagens/ft-2.png" alt="Treinamento de salto">
       <div class="caption">
         <h3>O Problema que Enxergamos</h3>
         <p>Percebemos que muitos jovens atletas não têm acesso a treinadores, conteúdos técnicos ou estrutura adequada. Isso limita seu desenvolvimento, principalmente fora dos grandes centros.</p>
@@ -57,7 +57,7 @@
     </div>
 
     <div class="carousel-slide">
-      <img src="./imagens/equipe-3.jpg" alt="Universitário jogando vôlei">
+      <img src="./imagens/ft-3.png" alt="Universitário jogando vôlei">
       <div class="caption">
         <h3>Construindo Soluções</h3>
         <p>Desenvolvemos uma plataforma online com vídeos, textos e feedbacks personalizados. Um espaço para qualquer pessoa evoluir no voleibol, independentemente da sua condição ou localização.</p>
@@ -65,7 +65,7 @@
     </div>
 
     <div class="carousel-slide">
-      <img src="./imagens/equipe-4.jpg" alt="Palestra">
+      <img src="./imagens/ft-4.png" alt="Palestra">
       <div class="caption">
         <h3>Nosso Propósito</h3>
         <p>Queremos democratizar o ensino do voleibol. Através da tecnologia, levamos orientação técnica acessível a todos e ajudamos a formar atletas mais preparados, confiantes e apaixonados pelo esporte.</p>
