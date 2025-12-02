@@ -225,16 +225,11 @@ href="../aulas/<?php echo $moduloSemAcento; ?>.php">
 
   <br>
 
-  <div class="video-box">
-    <h3>Como adicionar o link da Aula:</h3>
-            <iframe id="videoFrame"
-                    src="https://www.youtube.com/embed/l7VsurR48Ew?si=l4JnwHaafeO2MpIT"
-                    title="Vídeo da Aula"
-                    frameborder="0"
-                    allowfullscreen>
-            </iframe>
-  </div>
-</div>
+     <h3>Como adicionar o link da Aula:</h3>
+<video width="400" controls>
+=
+  <source src="../imagens/tutorial.mp4" type="video/mp4">
+</video>
 
 </body>
 </html>
