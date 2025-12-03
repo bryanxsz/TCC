@@ -87,7 +87,7 @@
             <h2>LEONARDO</h2>
             <div class="linha"></div>
             
-            <p><strong>Posição: Levantador (Setter) e Capitão</strong></p>
+            <p><strong>Posição: Ponteiro (Outside Hitter)</strong></p>
 
             <p>Líder técnico e tático da equipe, com 12 anos de experiência<br>
             <em>(Foco em organização de jogadas e tomada de decisão sob pressão)</em></p>
@@ -136,7 +136,7 @@
             <h2>DIOGO</h2>
             <div class="linha"></div>
 
-            <p><strong>Posição: Central (Middle Blocker)</strong></p>
+            <p><strong>Posição: Ponteiro (Outside Hitter)</strong></p>
 
             <p>Especialista em bloqueio e ataque de primeiro tempo, com 11 anos de experiência</p>
 
@@ -159,7 +159,7 @@
             <h2>MURILO</h2>
             <div class="linha"></div>
 
-            <p><strong>Posição: Líbero (Libero)</strong></p>
+            <p><strong>Posição: Central (Middle Blocker)</strong></p>
 
             <p>Referência em defesa e recepção de saque há mais de 10 anos<br>
             <em>(Garantia da estabilidade do passe para a organização ofensiva)</em></p>

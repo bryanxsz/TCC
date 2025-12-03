@@ -15,7 +15,7 @@ $usuario_id = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : null;
 $usuario_tipo = isset($_SESSION['user_tipo']) ? $_SESSION['user_tipo'] : null;
 
 // Módulo atual
-$modulo = "recepcão";
+$modulo = "manchete";
 
 // Busca aulas existentes
 $stmt = $conn->prepare("SELECT * FROM aulas WHERE modulo = ? ORDER BY numero_aula ASC");
@@ -94,6 +94,8 @@ $canEdit = ($usuario_tipo == '2') ? true : false; // boolean flag para o front-e
     <title>Aulas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="aulas.css">
+    <link rel="icon" href="../imagens/logospike.png" type="image/x-icon">
+
 </head>
 <body>
 

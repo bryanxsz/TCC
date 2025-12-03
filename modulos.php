@@ -23,7 +23,7 @@ $usuario_id = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : null;
 
 // lista de módulos que aparecem na sua página (chaves = slug usado no DB/modulo, valores = título exibido)
 $modules = [
-    'recepcão'   => 'Recepção',
+    'manchete'   => 'Manchete',
     'toque'      => 'Toque',
     'saque'      => 'Saque',
     'ataque'     => 'Ataque',
@@ -179,7 +179,7 @@ if ($stmtVistas) $stmtVistas->close();
       <div class="grid">
 
 <div class="card">
-    <img src="levantador.png" class="thumb" alt="Levantador">
+    <img src="./imagens/levantador.jpg" class="thumb" alt="Levantador">
     <div class="info">
         <h3>Levantador</h3>
         <div class="progress-line">
@@ -193,7 +193,7 @@ if ($stmtVistas) $stmtVistas->close();
 </div>
 
 <div class="card">
-    <img src="oposto.png" class="thumb" alt="Oposto">
+    <img src="./imagens/oposto.jpg" class="thumb" alt="Oposto">
 
     <div class="info">
         <h3>Oposto</h3>
@@ -210,7 +210,7 @@ if ($stmtVistas) $stmtVistas->close();
 </div>
 
 <div class="card">
-    <img src="ponteiro.png" class="thumb" alt="Ponteiro">
+    <img src="./imagens/ponteiro.jpg" class="thumb" alt="Ponteiro">
 
     <div class="info">
         <h3>Ponteiro</h3>
@@ -227,7 +227,7 @@ if ($stmtVistas) $stmtVistas->close();
 </div>
 
 <div class="card">
-    <img src="central.png" class="thumb" alt="Central">
+    <img src="./imagens/central.jpg" class="thumb" alt="Central">
 
     <div class="info">
         <h3>Central</h3>
@@ -245,7 +245,7 @@ if ($stmtVistas) $stmtVistas->close();
 
 
 <div class="card">
-    <img src="libero.png" class="thumb" alt="Líbero">
+    <img src="./imagens/libero.jpg" class="thumb" alt="Líbero">
 
     <div class="info">
         <h3>Líbero</h3>

@@ -46,12 +46,15 @@ $user = $result->fetch_assoc();
 
 
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Editar Conta</title>
-<link rel="stylesheet" href="style.css">
-<link rel="icon" href="./imagens/logospike.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Conta</title>
+    <link rel="icon" href="./imagens/logospike.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+
 <style>
 /* Adaptação do CSS fornecido */
 body {
@@ -163,7 +166,7 @@ button:hover {
         <input type="password" name="senha">
 
         <label>Telefone (opcional):</label>
-        <input type="text" name="telefone" value="<?php echo htmlspecialchars($user['telefone']); ?>">
+        <input type="tel" name="telefone" placeholder="(00) 00000-0000" value="<?php echo htmlspecialchars($user['telefone']); ?>">
 
         <button type="submit">Salvar Alterações</button>
     </form>

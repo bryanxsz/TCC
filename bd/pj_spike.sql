@@ -58,7 +58,6 @@ select * from usuario;
 select * from aulas_progresso;
 
 
-drop table aulas;
 
 INSERT INTO `pj_spike`.`usuario` (`id_usuario`, `nome`, `email`, `senha`, `tipo`) VALUES ('1', 'ADMIN', 'admin@gmail.com', '12', '3');
 INSERT INTO `pj_spike`.`usuario` (`id_usuario`, `nome`, `email`, `senha`, `tipo`) VALUES ('2', 'Cledenilson', 'cledenilson@gmail.com', '12', '2');
@@ -69,15 +68,18 @@ INSERT INTO `pj_spike`.`usuario` (`id_usuario`, `nome`, `email`, `senha`, `tipo`
 INSERT INTO `pj_spike`.`usuario` (`id_usuario`, `nome`, `email`, `senha`, `tipo`) VALUES ('7', 'Fabi', 'fabi@gmail.com', '12', '2');
 INSERT INTO `pj_spike`.`usuario` (`id_usuario`, `nome`, `email`, `senha`, `tipo`) VALUES ('8', 'Roberto', 'roberto@gmail.com', '12', '2');
 INSERT INTO `pj_spike`.`usuario` (`id_usuario`, `nome`, `email`, `senha`, `tipo`) VALUES ('9', 'Sikana', 'sikana@gmail.com', '12', '2');
+INSERT INTO `pj_spike`.`usuario` (`id_usuario`, `nome`, `email`, `senha`, `tipo`) VALUES ('10', 'Marcos', 'marcos@gmail.com', '12', '2');
+INSERT INTO `pj_spike`.`usuario` (`id_usuario`, `nome`, `email`, `senha`, `tipo`) VALUES ('11', 'Laluce', 'laluce@gmail.com', '12', '2');
 
-INSERT INTO `pj_spike`.`sistema_de_pagamento` (`id_sistema`, `valor`) VALUES ('1', '99');
+
+INSERT INTO `pj_spike`.`sistema_de_pagamento` (`id_sistema`, `valor`) VALUES ('1', '29.99');
 INSERT INTO `pj_spike`.`depoimentos` (`id`, `nome`, `cargo`, `texto`, `estrelas`, `ativo`) VALUES ('1', 'Anderson', 'Professor', 'Adoro trabalhar no Projeto spike!', '5', '1');
 
 
-INSERT INTO `pj_spike`.`aulas`(`id`, `modulo`, `nome_aula`, `numero_aula`, `titulo`, `link_video`, `professor_nome`, `professor_email`, `professor_telefone`) VALUES (1, 'recepcão', 'Introdução', 1, 'TÉCNICA DA MANCHETE', 'https://www.youtube.com/embed/NHtMA_cTXE4?si=w0xE2BZvT-12mgCN', 'Cledenilson', 'cledenilson@gmail.com', 'Não definido');
-INSERT INTO `pj_spike`.`aulas`(`id`, `modulo`, `nome_aula`, `numero_aula`, `titulo`, `link_video`, `professor_nome`, `professor_email`, `professor_telefone`) VALUES (2, 'recepcão', 'Aula I', 2, 'TUDO SOBRE RECEPÇÃO', 'https://www.youtube.com/embed/lDlDJzMSIYs?si=IYrfZ54TNwRf1MdI', 'Cardoso', 'cardoso@gmail.com', 'Não definido');
-INSERT INTO `pj_spike`.`aulas`(`id`, `modulo`, `nome_aula`, `numero_aula`, `titulo`, `link_video`, `professor_nome`, `professor_email`, `professor_telefone`) VALUES (3, 'recepcão', 'Aula II', 3, 'ERROS COMUNS', 'https://www.youtube.com/embed/grijG6ZCLxk?si=3aijc5r6nL_VSWoj', 'Cardoso', 'cardoso@gmail.com', 'Não definido');
-INSERT INTO `pj_spike`.`aulas`(`id`, `modulo`, `nome_aula`, `numero_aula`, `titulo`, `link_video`, `professor_nome`, `professor_email`, `professor_telefone`) VALUES (4, 'recepcão', 'Aula III', 4, 'POSICIONAMENTO DEFENSIVO', 'https://www.youtube.com/embed/IxeIHgMuhkg?si=DvoLlgc93k6UHfbH', 'Cardoso', 'cardoso@gmail.com', 'Não definido');
+INSERT INTO `pj_spike`.`aulas`(`id`, `modulo`, `nome_aula`, `numero_aula`, `titulo`, `link_video`, `professor_nome`, `professor_email`, `professor_telefone`) VALUES (1, 'manchete', 'Introdução', 1, 'TÉCNICA DA MANCHETE', 'https://www.youtube.com/embed/NHtMA_cTXE4?si=w0xE2BZvT-12mgCN', 'Cledenilson', 'cledenilson@gmail.com', 'Não definido');
+INSERT INTO `pj_spike`.`aulas`(`id`, `modulo`, `nome_aula`, `numero_aula`, `titulo`, `link_video`, `professor_nome`, `professor_email`, `professor_telefone`) VALUES (2, 'manchete', 'Aula I', 2, 'TUDO SOBRE RECEPÇÃO', 'https://www.youtube.com/embed/lDlDJzMSIYs?si=IYrfZ54TNwRf1MdI', 'Cardoso', 'cardoso@gmail.com', 'Não definido');
+INSERT INTO `pj_spike`.`aulas`(`id`, `modulo`, `nome_aula`, `numero_aula`, `titulo`, `link_video`, `professor_nome`, `professor_email`, `professor_telefone`) VALUES (3, 'manchete', 'Aula II', 3, 'ERROS COMUNS', 'https://www.youtube.com/embed/grijG6ZCLxk?si=3aijc5r6nL_VSWoj', 'Cardoso', 'cardoso@gmail.com', 'Não definido');
+INSERT INTO `pj_spike`.`aulas`(`id`, `modulo`, `nome_aula`, `numero_aula`, `titulo`, `link_video`, `professor_nome`, `professor_email`, `professor_telefone`) VALUES (4, 'manchete', 'Aula III', 4, 'POSICIONAMENTO DEFENSIVO', 'https://www.youtube.com/embed/IxeIHgMuhkg?si=DvoLlgc93k6UHfbH', 'Cardoso', 'cardoso@gmail.com', 'Não definido');
 
 INSERT INTO `pj_spike`.`aulas`(`id`, `modulo`, `nome_aula`, `numero_aula`, `titulo`, `link_video`, `professor_nome`, `professor_email`, `professor_telefone`) VALUES (5, 'toque', 'Introdução', 1, 'TÉCNICA DO TOQUE', 'https://www.youtube.com/embed/njvxg_MFBtA?si=KBqvOZFYckf2MS7e', 'Paulo Amorim', 'paulo@gmail.com', 'Não definido');
 INSERT INTO `pj_spike`.`aulas`(`id`, `modulo`, `nome_aula`, `numero_aula`, `titulo`, `link_video`, `professor_nome`, `professor_email`, `professor_telefone`) VALUES (6, 'toque', 'Como praticar I', 2, 'EXERCÍCIOS 1', 'https://www.youtube.com/embed/c5tPv-LAQ3A?si=2X0ENDJBg6D1ELaq', 'Satoru', 'satoru@gmail.com', 'Não definido');
@@ -97,3 +99,48 @@ INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,
 INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`) VALUES (17,'saque','Aula II',3,'SAQUE FLUTUANTE','https://www.youtube.com/embed/xHXCSYeOQN8?si=RU7a6_Jxm677M3o4','Fabi','fabi@gmail.com','Não definido');
 INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`) VALUES (18,'saque','Aula III',4,'SAQUE VIAGEM','https://www.youtube.com/embed/B_n3ek1WsMs?si=3cZXjYcoUql9LWwj','Cardoso','cardoso@gmail.com','Não definido');
 
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`) VALUES (19,'libero','Aula I',1,'POSICIONAMENTO DO LÍBERO NA DEFESA','https://www.youtube.com/embed/y6wJaYRBUy8?si=4Ox8PPyPdbgxI9P9','Marcos','marcos@gmail.com','Não definido');
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`) VALUES (20,'libero','Aula II',2,'ROTAÇÃO 5X1 LÍBERO','https://www.youtube.com/embed/zaiSAXz34Rs?si=6nWhp-Zt4Z5RCI51','Marcos','marcos@gmail.com','Não definido');
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`) VALUES (21,'libero','Aula III',3,'LEVANTAMENTO DE MANCHETE','https://www.youtube.com/embed/VCBJk1MT_P4?si=lh7ZmgVvuOd6t8P3','Marcos','marcos@gmail.com','Não definido');
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`) VALUES (22,'libero','Aula IV',4,'TUDO SOBRE LÍBERO (APROFUNDAMENTO)','https://www.youtube.com/embed/OVGEQG_Bwqc?si=PO5xdXqgF-g0UOmB','Marcos','marcos@gmail.com','Não definido');
+
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`)
+VALUES (23,'levantador','Aula I',1,'FUNÇÃO, POSIÇÃO E MOVIMENTAÇÃO','https://www.youtube.com/embed/JEnSXZg6dVM?si=SPwZmRNlXkQ8NCzK','Marcos','marcos@gmail.com','Não definido');
+
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`)
+VALUES (24,'levantador','Aula II',2,'INFILTRAÇÕES','https://www.youtube.com/embed/z8hyqRVQF1U?si=oCHz9mNTfDDsKJ1n','Marcos','marcos@gmail.com','Não definido');
+
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`)
+VALUES (25,'levantador','Aula III',3,'LEVANTAMENTOS PARA A ENTRADA DE REDE','https://www.youtube.com/embed/o24YonI5Fus?si=9vNGOqnm1f8BK94Z','Laluce','laluce@gmail.com','Não definido');
+
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`)
+VALUES (26,'levantador','Aula IV',4,'LEVANTAMENTOS PARA O CENTRAL','https://www.youtube.com/embed/okH7z9yYfL4?si=ev7QTFCIXkaBUxC4','Laluce','laluce@gmail.com','Não definido');
+
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`)
+VALUES (27,'levantador','Aula V',5,'LEVANTAMENTO PARA A SAÍDA DE REDE','https://www.youtube.com/embed/0jMUl63pYzg?si=ZsbZbhtf63Nwl_1T','Cardoso','cardoso@gmail.com','Não definido');
+
+
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`)
+VALUES (28,'ponteiro','Aula I',1,'GUIA GERAL','https://www.youtube.com/embed/378g_63NZ5s?si=E9LwwQQhkVBnhcW7','Cardoso','cardoso@gmail.com','Não definido');
+
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`)
+VALUES (29,'ponteiro','Aula II',2,'FUNÇÃO, POSIÇÃO E MOVIMENTAÇÃO','https://www.youtube.com/embed/378g_63NZ5s?si=E9LwwQQhkVBnhcW7','Marcos','marcos@gmail.com','Não definido');
+
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`)
+VALUES (30,'ponteiro','Aula III',3,'COMO ATACAR PIPE','https://www.youtube.com/embed/2rBLK7I9Cfo?si=ty1haZCOjkmdpGNr','Cardoso','cardoso@gmail.com','Não definido');
+
+
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`)
+VALUES (31,'oposto','Introdução',1,'FUNÇÃO, POSIÇÃO E MOVIMENTAÇÃO','https://www.youtube.com/embed/2c1n8rOMLBc?si=WxzebV3Vzlv0naIP','Marcos','marcos@gmail.com','Não definido');
+
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`)
+VALUES (32,'oposto','Aula I',2,'POSICIONAMENTO NA DEFESA','https://www.youtube.com/embed/JoUwCuBKULs?si=RvmRpgHFsqy3xZiM','Marcos','marcos@gmail.com','Não definido');
+
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`)
+VALUES (33,'oposto','Aula II',3,'POSICIONAMENTO PARA ATAQUE','https://www.youtube.com/embed/kCwPhFzENW4?si=MmsJYjsDAENqCasw','Marcos','marcos@gmail.com','Não definido');
+
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`)
+VALUES (34,'central','Aula I',1,'FUNÇÃO, POSIÇÃO E MOVIMENTAÇÃO','https://www.youtube.com/embed/AoxV0uuzjF0?si=NUIYEhPIl1WCUIT_','Marcos','marcos@gmail.com','Não definido');
+
+INSERT INTO `pj_spike`.`aulas`(`id`,`modulo`,`nome_aula`,`numero_aula`,`titulo`,`link_video`,`professor_nome`,`professor_email`,`professor_telefone`)
+VALUES (35,'central','Aula II',2,'MOVIMENTAÇÃO CENTRAL + LEVANTADOR','https://www.youtube.com/embed/AXPhG8Xk3Eg?si=7r7AIBAUAgpLYol2','Marcos','marcos@gmail.com','Não definido');
